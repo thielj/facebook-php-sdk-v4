@@ -148,7 +148,7 @@ class FacebookRedirectLoginHelper
      *
      * @return string
      */
-    private function makeUrl($redirectUrl, array $scope, array $params = [], $separator = '&')
+    private function makeUrl($redirectUrl, array $scope, array $params = array(), $separator = '&')
     {
         $state = $this->pseudoRandomStringGenerator->getPseudoRandomString(static::CSRF_LENGTH);
         $this->persistentDataHandler->set('state', $state);
@@ -165,9 +165,9 @@ class FacebookRedirectLoginHelper
      *
      * @return string
      */
-    public function getLoginUrl($redirectUrl, array $scope = [], $separator = '&')
+    public function getLoginUrl($redirectUrl, array $scope = array(), $separator = '&')
     {
-        return $this->makeUrl($redirectUrl, $scope, [], $separator);
+        return $this->makeUrl($redirectUrl, $scope, array(), $separator);
     }
 
     /**
@@ -208,7 +208,7 @@ class FacebookRedirectLoginHelper
      *
      * @return string
      */
-    public function getReRequestUrl($redirectUrl, array $scope = [], $separator = '&')
+    public function getReRequestUrl($redirectUrl, array $scope = array(), $separator = '&')
     {
         $params = ['auth_type' => 'rerequest'];
 
@@ -224,7 +224,7 @@ class FacebookRedirectLoginHelper
      *
      * @return string
      */
-    public function getReAuthenticationUrl($redirectUrl, array $scope = [], $separator = '&')
+    public function getReAuthenticationUrl($redirectUrl, array $scope = array(), $separator = '&')
     {
         $params = ['auth_type' => 'reauthenticate'];
 

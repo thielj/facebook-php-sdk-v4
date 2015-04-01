@@ -148,10 +148,10 @@ class FacebookCurlHttpClient implements FacebookHttpClientInterface
      */
     public function compileRequestHeaders(array $headers)
     {
-        $return = [];
+        $return = array();
 
         foreach ($headers as $key => $value) {
-            $return[] = $key . ': ' . $value;
+            $returnarray() = $key . ': ' . $value;
         }
 
         return $return;
