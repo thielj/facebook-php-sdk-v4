@@ -141,18 +141,6 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testGuzzleHttpClientHandlerCanBeForced()
-    {
-        $config = array_merge($this->config, array(
-            'http_client_handler' => 'guzzle'
-        ));
-        $fb = new Facebook($config);
-        $this->assertInstanceOf(
-            'Facebook\HttpClients\FacebookGuzzleHttpClient',
-            $fb->getClient()->getHttpClientHandler()
-        );
-    }
-
     /**
      * @expectedException \InvalidArgumentException
      */

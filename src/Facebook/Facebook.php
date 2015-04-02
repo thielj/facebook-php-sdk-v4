@@ -37,7 +37,6 @@ use Facebook\PseudoRandomString\UrandomPseudoRandomStringGenerator;
 use Facebook\HttpClients\FacebookHttpClientInterface;
 use Facebook\HttpClients\FacebookCurlHttpClient;
 use Facebook\HttpClients\FacebookStreamHttpClient;
-use Facebook\HttpClients\FacebookGuzzleHttpClient;
 use Facebook\PersistentData\PersistentDataInterface;
 use Facebook\PersistentData\FacebookSessionPersistentDataHandler;
 use Facebook\PersistentData\FacebookMemoryPersistentDataHandler;
@@ -148,8 +147,6 @@ class Facebook
                 $httpClientHandler = new FacebookCurlHttpClient();
             } elseif ($config['http_client_handler'] === 'stream') {
                 $httpClientHandler = new FacebookStreamHttpClient();
-            } elseif ($config['http_client_handler'] === 'guzzle') {
-                $httpClientHandler = new FacebookGuzzleHttpClient();
             } else {
                 throw new \InvalidArgumentException('The http_client_handler must be set to "curl", "stream", "guzzle", or be an instance of Facebook\HttpClients\FacebookHttpClientInterface');
             }

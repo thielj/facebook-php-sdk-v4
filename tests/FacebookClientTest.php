@@ -35,7 +35,6 @@ use Facebook\FileUpload\FacebookFile;
 use Facebook\FileUpload\FacebookVideo;
 // These are needed when you uncomment the HTTP clients below.
 use Facebook\HttpClients\FacebookCurlHttpClient;
-use Facebook\HttpClients\FacebookGuzzleHttpClient;
 use Facebook\HttpClients\FacebookStreamHttpClient;
 
 class MyFooClientHandler implements FacebookHttpClientInterface
