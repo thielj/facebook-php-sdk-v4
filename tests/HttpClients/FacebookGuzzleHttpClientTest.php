@@ -61,7 +61,7 @@ class FacebookGuzzleHttpClientTest extends AbstractTestHttpClient
             ->with('GET', 'http://foo.com/', m::on(function ($arg) {
 
                 // array_diff_assoc() will sometimes trigger error on child-arrays
-                if (['X-foo' => 'bar'] !== $arg['headers']) {
+                if (array('X-foo' => 'bar'] !== $arg['headers']) {
                     return false;
                 }
                 unset($arg['headers']);
@@ -110,7 +110,7 @@ class FacebookGuzzleHttpClientTest extends AbstractTestHttpClient
             ->with('GET', 'http://foo.com/', m::on(function ($arg) {
 
                 // array_diff_assoc() will sometimes trigger error on child-arrays
-                if ([] !== $arg['headers']) {
+                if (array() !== $arg['headers']) {
                     return false;
                 }
                 unset($arg['headers']);

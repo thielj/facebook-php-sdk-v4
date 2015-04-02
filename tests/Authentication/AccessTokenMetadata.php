@@ -28,28 +28,28 @@ use Facebook\Authentication\AccessTokenMetadata;
 class AccessTokenMetadataTest extends \PHPUnit_Framework_TestCase
 {
 
-    protected $graphResponseData = [
-        'data' => [
+    protected $graphResponseData = array(
+        'data' => array(
             'app_id' => '123',
             'application' => 'Foo App',
-            'error' => [
+            'error' => array(
                 'code' => 190,
                 'message' => 'Foo error message.',
                 'subcode' => 463,
-            ],
+            ),
             'issued_at' => 1422110200,
             'expires_at' => 1422115200,
             'is_valid' => false,
-            'metadata' => [
+            'metadata' => array(
                 'sso' => 'iphone-sso',
                 'auth_type' => 'rerequest',
                 'auth_nonce' => 'no-replicatey',
-            ],
-            'scopes' => ['public_profile', 'basic_info', 'user_friends'],
+            ),
+            'scopes' => array('public_profile', 'basic_info', 'user_friends'),
             'profile_id' => '1000',
             'user_id' => '1337',
-        ],
-    ];
+        ),
+    );
 
     public function testDatesGetCastToDateTime()
     {
@@ -77,7 +77,7 @@ class AccessTokenMetadataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('rerequest', $metadata->getAuthType());
         $this->assertEquals('no-replicatey', $metadata->getAuthNonce());
         $this->assertEquals('1000', $metadata->getProfileId());
-        $this->assertEquals(['public_profile', 'basic_info', 'user_friends'], $metadata->getScopes());
+        $this->assertEquals(array('public_profile', 'basic_info', 'user_friends'], $metadata->getScopes());
         $this->assertEquals('1337', $metadata->getUserId());
     }
 
@@ -86,7 +86,7 @@ class AccessTokenMetadataTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidMetadataWillThrow()
     {
-        new AccessTokenMetadata(['foo' => 'bar']);
+        new AccessTokenMetadata(array('foo' => 'bar']);
     }
 
     public function testAnExpectedAppIdWillNotThrow()

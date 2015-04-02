@@ -49,7 +49,7 @@ class FacebookBatchResponseTest extends \PHPUnit_Framework_TestCase
             'foo_token',
             'POST',
             '/',
-            ['batch' => 'foo'],
+            array('batch' => 'foo'),
             'foo_eTag',
             'v1337'
         );
@@ -120,11 +120,11 @@ class FacebookBatchResponseTest extends \PHPUnit_Framework_TestCase
         $graphResponseJson .= ']';
         $response = new FacebookResponse($this->request, $graphResponseJson, 200);
 
-        $requests = [
+        $requests = array(
             new FacebookRequest($this->app, 'foo_token_one', 'GET', '/me'),
             new FacebookRequest($this->app, 'foo_token_two', 'POST', '/you'),
             new FacebookRequest($this->app, 'foo_token_three', 'DELETE', '/123456'),
-        ];
+        );
 
         $batchRequest = new FacebookBatchRequest($this->app, $requests);
         $batchResponse = new FacebookBatchResponse($batchRequest, $response);

@@ -92,11 +92,11 @@ class FacebookRequestTest extends \PHPUnit_Framework_TestCase
 
         $params = $request->getParams();
 
-        $this->assertEquals([
+        $this->assertEquals(array(
             'foo' => 'bar',
             'access_token' => 'foo_token',
             'appsecret_proof' => 'df4256903ba4e23636cc142117aa632133d75c642bd2a68955be1443bd14deb9',
-        ], $params);
+        ), $params);
     }
 
     public function testAnAccessTokenCanBeSetFromTheParams()
@@ -146,7 +146,7 @@ class FacebookRequestTest extends \PHPUnit_Framework_TestCase
             $accessToken = 'foo_token',
             $method = 'GET',
             $endpoint = '/foo',
-            $params = [
+            $params = array(
                 'access_token' => 'foo_token',
                 'appsecret_proof' => 'bar_app_secret',
                 'bar' => 'baz',
@@ -161,21 +161,21 @@ class FacebookRequestTest extends \PHPUnit_Framework_TestCase
 
         $params = $request->getParams();
 
-        $expectedParams = [
+        $expectedParams = array(
             'access_token' => 'foo_token',
             'appsecret_proof' => 'df4256903ba4e23636cc142117aa632133d75c642bd2a68955be1443bd14deb9',
             'bar' => 'baz',
-        ];
+        );
         $this->assertEquals($expectedParams, $params);
     }
 
     public function testAFileCanBeAddedToParams()
     {
         $myFile = new FacebookFile(__DIR__ . '/foo.txt');
-        $params = [
+        $params = array(
             'name' => 'Foo Bar',
             'source' => $myFile,
-        ];
+        );
         $app = new FacebookApp('123', 'foo_secret');
         $request = new FacebookRequest($app, 'foo_token', 'POST', '/foo/photos', $params);
 
@@ -190,10 +190,10 @@ class FacebookRequestTest extends \PHPUnit_Framework_TestCase
     public function testAVideoCanBeAddedToParams()
     {
         $myFile = new FacebookVideo(__DIR__ . '/foo.txt');
-        $params = [
+        $params = array(
             'name' => 'Foo Bar',
             'source' => $myFile,
-        ];
+        );
         $app = new FacebookApp('123', 'foo_secret');
         $request = new FacebookRequest($app, 'foo_token', 'POST', '/foo/videos', $params);
 

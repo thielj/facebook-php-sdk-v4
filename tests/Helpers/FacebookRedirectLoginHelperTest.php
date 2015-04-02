@@ -72,19 +72,19 @@ class FacebookRedirectLoginHelperTest extends \PHPUnit_Framework_TestCase
 
     public function testLoginURL()
     {
-        $scope = ['foo', 'bar'];
+        $scope = array('foo', 'bar'];
         $loginUrl = $this->redirectLoginHelper->getLoginUrl(self::REDIRECT_URL, $scope);
 
         $expectedUrl = 'https://www.facebook.com/v1337/dialog/oauth?';
         $this->assertTrue(strpos($loginUrl, $expectedUrl) === 0, 'Unexpected base login URL returned from getLoginUrl().');
 
-        $params = [
+        $params = array(
             'client_id' => '123',
             'redirect_uri' => self::REDIRECT_URL,
             'state' => $this->persistentDataHandler->get('state'),
             'sdk' => 'php-sdk-' . Facebook::VERSION,
             'scope' => implode(',', $scope),
-        ];
+        );
         foreach ($params as $key => $value) {
             $this->assertContains($key . '=' . urlencode($value), $loginUrl);
         }
@@ -96,10 +96,10 @@ class FacebookRedirectLoginHelperTest extends \PHPUnit_Framework_TestCase
         $expectedUrl = 'https://www.facebook.com/logout.php?';
         $this->assertTrue(strpos($logoutUrl, $expectedUrl) === 0, 'Unexpected base logout URL returned from getLogoutUrl().');
 
-        $params = [
+        $params = array(
             'next' => self::REDIRECT_URL,
             'access_token' => 'foo_token',
-        ];
+        );
         foreach ($params as $key => $value) {
             $this->assertTrue(
                 strpos($logoutUrl, $key . '=' . urlencode($value)) !== false

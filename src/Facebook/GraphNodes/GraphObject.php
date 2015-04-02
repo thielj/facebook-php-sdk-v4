@@ -141,7 +141,7 @@ class GraphObject extends Collection
      */
     public function shouldCastAsDateTime($key)
     {
-        return in_array($key, [
+        return in_array($key, array(
             'created_time',
             'updated_time',
             'start_time',
@@ -151,7 +151,7 @@ class GraphObject extends Collection
             'expires_at',
             'birthday',
             'publish_time'
-        ], true);
+        ), true);
     }
 
     /**

@@ -40,18 +40,18 @@ class GraphPageTest extends \PHPUnit_Framework_TestCase
 
     public function testPagePropertiesReturnGraphPageObjects()
     {
-        $dataFromGraph = [
+        $dataFromGraph = array(
             'id' => '123',
             'name' => 'Foo Page',
-            'best_page' => [
+            'best_page' => array(
                 'id' => '1',
                 'name' => 'Bar Page',
-            ],
-            'global_brand_parent_page' => [
+            ),
+            'global_brand_parent_page' => array(
                 'id' => '2',
                 'name' => 'Faz Page',
-            ],
-        ];
+            ),
+        );
 
         $this->responseMock
             ->shouldReceive('getDecodedBody')
@@ -69,17 +69,17 @@ class GraphPageTest extends \PHPUnit_Framework_TestCase
 
     public function testLocationPropertyWillGetCastAsGraphLocationObject()
     {
-        $dataFromGraph = [
+        $dataFromGraph = array(
             'id' => '123',
             'name' => 'Foo Page',
-            'location' => [
+            'location' => array(
                 'city' => 'Washington',
                 'country' => 'United States',
                 'latitude' => 38.881634205431,
                 'longitude' => -77.029121075722,
                 'state' => 'DC',
-            ],
-        ];
+            ),
+        );
 
         $this->responseMock
             ->shouldReceive('getDecodedBody')

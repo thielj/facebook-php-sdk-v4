@@ -30,10 +30,10 @@ class RequestBodyMultipartTest extends \PHPUnit_Framework_TestCase
 {
     public function testCanProperlyEncodeAnArrayOfParams()
     {
-        $message = new RequestBodyMultipart([
+        $message = new RequestBodyMultipart(array(
             'foo' => 'bar',
             'scawy_vawues' => '@FooBar is a real twitter handle.',
-        ], array(), 'foo_boundary');
+        ), array(), 'foo_boundary');
         $body = $message->getBody();
 
         $expectedBody = "--foo_boundary\r\n";
@@ -48,11 +48,11 @@ class RequestBodyMultipartTest extends \PHPUnit_Framework_TestCase
     public function testCanProperlyEncodeFilesAndParams()
     {
         $file = new FacebookFile(__DIR__ . '/../foo.txt');
-        $message = new RequestBodyMultipart([
+        $message = new RequestBodyMultipart(array(
             'foo' => 'bar',
-        ], [
+        ), [
             'foo_file' => $file,
-        ], 'foo_boundary');
+        ), 'foo_boundary');
         $body = $message->getBody();
 
         $expectedBody = "--foo_boundary\r\n";

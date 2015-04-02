@@ -62,11 +62,11 @@ class OAuth2ClientTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Facebook\Authentication\AccessTokenMetadata', $metadata);
         $this->assertEquals('444', $metadata->getUserId());
 
-        $expectedParams = [
+        $expectedParams = array(
             'input_token' => 'baz_token',
             'access_token' => '123|foo_secret',
             'appsecret_proof' => 'de753c58fd58b03afca2340bbaeb4ecf987b5de4c09e39a63c944dd25efbc234',
-        ];
+        );
 
         $request = $this->oauth->getLastRequest();
         $this->assertEquals('GET', $request->getMethod());
@@ -77,7 +77,7 @@ class OAuth2ClientTest extends \PHPUnit_Framework_TestCase
 
     public function testCanBuildAuthorizationUrl()
     {
-        $scope = ['email', 'base_foo'];
+        $scope = array('email', 'base_foo');
         $authUrl = $this->oauth->getAuthorizationUrl('https://foo.bar', 'foo_state', $scope, ['foo' => 'bar'], '*');
 
         $this->assertContains('*', $authUrl);
@@ -85,14 +85,14 @@ class OAuth2ClientTest extends \PHPUnit_Framework_TestCase
         $expectedUrl = 'https://www.facebook.com/' . static::TESTING_GRAPH_VERSION . '/dialog/oauth?';
         $this->assertTrue(strpos($authUrl, $expectedUrl) === 0, 'Unexpected base authorization URL returned from getAuthorizationUrl().');
 
-        $params = [
+        $params = array(
             'client_id' => '123',
             'redirect_uri' => 'https://foo.bar',
             'state' => 'foo_state',
             'sdk' => 'php-sdk-' . Facebook::VERSION,
             'scope' => implode(',', $scope),
             'foo' => 'bar',
-        ];
+        );
         foreach ($params as $key => $value) {
             $this->assertContains($key . '=' . urlencode($value), $authUrl);
         }
@@ -107,14 +107,14 @@ class OAuth2ClientTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Facebook\Authentication\AccessToken', $accessToken);
         $this->assertEquals('my_access_token', $accessToken->getValue());
 
-        $expectedParams = [
+        $expectedParams = array(
             'code' => 'bar_code',
             'redirect_uri' => 'foo_uri',
             'client_id' => '123',
             'client_secret' => 'foo_secret',
             'access_token' => '123|foo_secret',
             'appsecret_proof' => 'de753c58fd58b03afca2340bbaeb4ecf987b5de4c09e39a63c944dd25efbc234',
-        ];
+        );
 
         $request = $this->oauth->getLastRequest();
         $this->assertEquals('GET', $request->getMethod());
@@ -131,14 +131,14 @@ class OAuth2ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('my_access_token', $accessToken->getValue());
 
-        $expectedParams = [
+        $expectedParams = array(
             'grant_type' => 'fb_exchange_token',
             'fb_exchange_token' => 'short_token',
             'client_id' => '123',
             'client_secret' => 'foo_secret',
             'access_token' => '123|foo_secret',
             'appsecret_proof' => 'de753c58fd58b03afca2340bbaeb4ecf987b5de4c09e39a63c944dd25efbc234',
-        ];
+        );
 
         $request = $this->oauth->getLastRequest();
         $this->assertEquals($expectedParams, $request->getParams());
@@ -152,13 +152,13 @@ class OAuth2ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('my_neat_code', $code);
 
-        $expectedParams = [
+        $expectedParams = array(
             'access_token' => 'long_token',
             'redirect_uri' => 'foo_uri',
             'client_id' => '123',
             'client_secret' => 'foo_secret',
             'appsecret_proof' => '7e91300ea91be4166282611d4fc700b473466f3ea2981dafbf492fc096995bf1',
-        ];
+        );
 
         $request = $this->oauth->getLastRequest();
         $this->assertEquals($expectedParams, $request->getParams());

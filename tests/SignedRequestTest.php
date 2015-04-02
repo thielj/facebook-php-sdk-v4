@@ -36,7 +36,7 @@ class SignedRequestTest extends \PHPUnit_Framework_TestCase
     protected $rawSignature = 'U0_O1MqqNKUt32633zAkdd2Ce-jGVgRgJeRauyx_zC8=';
     protected $rawPayload = 'eyJvYXV0aF90b2tlbiI6ImZvb190b2tlbiIsImFsZ29yaXRobSI6IkhNQUMtU0hBMjU2IiwiaXNzdWVkX2F0IjozMjEsImNvZGUiOiJmb29fY29kZSIsInN0YXRlIjoiZm9vX3N0YXRlIiwidXNlcl9pZCI6MTIzLCJmb28iOiJiYXIifQ==';
 
-    protected $payloadData = [
+    protected $payloadData = array(
         'oauth_token' => 'foo_token',
         'algorithm' => 'HMAC-SHA256',
         'issued_at' => 321,
@@ -44,7 +44,7 @@ class SignedRequestTest extends \PHPUnit_Framework_TestCase
         'state' => 'foo_state',
         'user_id' => 123,
         'foo' => 'bar',
-    ];
+    );
 
     public function setUp()
     {

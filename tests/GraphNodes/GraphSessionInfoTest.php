@@ -40,10 +40,10 @@ class GraphSessionInfoTest extends \PHPUnit_Framework_TestCase
 
     public function testDatesGetCastToDateTime()
     {
-        $dataFromGraph = [
+        $dataFromGraph = array(
             'expires_at' => 123,
             'issued_at' => 1337,
-        ];
+        );
 
         $this->responseMock
             ->shouldReceive('getDecodedBody')

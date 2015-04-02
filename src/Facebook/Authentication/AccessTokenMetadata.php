@@ -47,7 +47,7 @@ class AccessTokenMetadata
      *
      * @var array
      */
-    protected static $dateProperties = ['expires_at', 'issued_at'];
+    protected static $dateProperties = array('expires_at', 'issued_at'];
 
     /**
      * @param array $metadata

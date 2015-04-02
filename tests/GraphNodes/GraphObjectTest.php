@@ -32,15 +32,15 @@ class GraphObjectTest extends \PHPUnit_Framework_TestCase
         $graphObject = new GraphObject();
         $backingData = $graphObject->asArray();
 
-        $this->assertEquals([], $backingData);
+        $this->assertEquals(array(), $backingData);
     }
 
     public function testAGraphObjectCanInstantiateWithData()
     {
-        $graphObject = new GraphObject(['foo' => 'bar']);
+        $graphObject = new GraphObject(array('foo' => 'bar'));
         $backingData = $graphObject->asArray();
 
-        $this->assertEquals(['foo' => 'bar'], $backingData);
+        $this->assertEquals(array('foo' => 'bar'), $backingData);
     }
 
     public function testDatesThatShouldBeCastAsDateTimeObjectsAreDetected()
@@ -96,8 +96,8 @@ class GraphObjectTest extends \PHPUnit_Framework_TestCase
 
     public function testUncastingAGraphObjectWillUncastTheDateTimeObject()
     {
-        $collectionOne = new GraphObject(['foo', 'bar']);
-        $collectionTwo = new GraphObject([
+        $collectionOne = new GraphObject(array('foo', 'bar']);
+        $collectionTwo = new GraphObject(array(
             'id' => '123',
             'date' => new \DateTime('2014-07-15T03:44:53+0000'),
             'some_collection' => $collectionOne,
@@ -105,16 +105,16 @@ class GraphObjectTest extends \PHPUnit_Framework_TestCase
 
         $uncastArray = $collectionTwo->uncastItems();
 
-        $this->assertEquals([
+        $this->assertEquals(array(
             'id' => '123',
             'date' => '2014-07-15T03:44:53+0000',
-            'some_collection' => ['foo', 'bar'],
-        ], $uncastArray);
+            'some_collection' => array('foo', 'bar'],
+        ), $uncastArray);
     }
 
     public function testGettingGraphObjectAsAnArrayWillNotUncastTheDateTimeObject()
     {
-        $collection = new GraphObject([
+        $collection = new GraphObject(array(
             'id' => '123',
             'date' => new \DateTime('2014-07-15T03:44:53+0000'),
         ]);
@@ -126,7 +126,7 @@ class GraphObjectTest extends \PHPUnit_Framework_TestCase
 
     public function testReturningACollectionAsJasonWillSafelyRepresentDateTimes()
     {
-        $collection = new GraphObject([
+        $collection = new GraphObject(array(
             'id' => '123',
             'date' => new \DateTime('2014-07-15T03:44:53+0000'),
         ]);

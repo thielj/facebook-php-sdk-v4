@@ -75,10 +75,10 @@ class FooBarPseudoRandomStringGenerator implements PseudoRandomStringGeneratorIn
 
 class FacebookTest extends \PHPUnit_Framework_TestCase
 {
-    protected $config = [
+    protected $config = array(
         'app_id' => '1337',
         'app_secret' => 'foo_secret',
-    ];
+    );
 
     /**
      * @expectedException \Facebook\Exceptions\FacebookSDKException
@@ -87,9 +87,9 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
     {
         // unset value so there is no fallback to test expected Exception
         putenv(Facebook::APP_ID_ENV_NAME.'=');
-        $config = [
+        $config = array(
             'app_secret' => 'foo_secret',
-        ];
+        );
         $fb = new Facebook($config);
     }
 
@@ -100,9 +100,9 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
     {
         // unset value so there is no fallback to test expected Exception
         putenv(Facebook::APP_SECRET_ENV_NAME.'=');
-        $config = [
+        $config = array(
             'app_id' => 'foo_id',
-        ];
+        );
         $fb = new Facebook($config);
     }
 
@@ -357,14 +357,14 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
         $graphList = new GraphList(
             $request,
             array(),
-            [
-                'paging' => [
-                    'cursors' => [
+            array(
+                'paging' => array(
+                    'cursors' => array(
                         'after' => 'bar_after_cursor',
                         'before' => 'bar_before_cursor',
-                    ],
+                    ),
                 ]
-            ],
+            ),
             '/1337/photos',
             '\Facebook\GraphNodes\GraphUser'
         );

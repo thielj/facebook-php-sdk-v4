@@ -39,21 +39,21 @@ Date: Mon, 19 May 2014 18:37:17 GMT
 X-FB-Debug: 02QQiffE7JG2rV6i/Agzd0gI2/OOQ2lk5UW0=
 Access-Control-Allow-Origin: *\r\n\r\n
 HEADER;
-    protected $fakeHeadersAsArray = [
+    protected $fakeHeadersAsArray = array(
         'Etag' => '"9d86b21aa74d74e574bbb35ba13524a52deb96e3"',
         'Content-Type' => 'text/javascript; charset=UTF-8',
         'X-FB-Rev' => '9244768',
         'Date' => 'Mon, 19 May 2014 18:37:17 GMT',
         'X-FB-Debug' => '02QQiffE7JG2rV6i/Agzd0gI2/OOQ2lk5UW0=',
         'Access-Control-Allow-Origin' => '*',
-    ];
+    );
 
     public function testCanSetTheHeadersFromAnArray()
     {
-        $myHeaders = [
+        $myHeaders = array(
             'foo' => 'bar',
             'baz' => 'faz',
-        ];
+        );
         $response = new GraphRawResponse($myHeaders, '');
         $headers = $response->getHeaders();
 

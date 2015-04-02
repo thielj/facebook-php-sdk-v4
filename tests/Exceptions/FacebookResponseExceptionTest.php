@@ -43,14 +43,14 @@ class FacebookResponseExceptionTest extends \PHPUnit_Framework_TestCase
 
     public function testAuthenticationExceptions()
     {
-        $params = [
-            'error' => [
+        $params = array(
+            'error' => array(
                 'code' => 100,
                 'message' => 'errmsg',
                 'error_subcode' => 0,
                 'type' => 'exception'
-            ],
-        ];
+            ),
+        );
 
         $response = new FacebookResponse($this->request, json_encode($params), 401);
         $exception = FacebookResponseException::create($response);
@@ -109,14 +109,14 @@ class FacebookResponseExceptionTest extends \PHPUnit_Framework_TestCase
 
     public function testServerExceptions()
     {
-        $params = [
-            'error' => [
+        $params = array(
+            'error' => array(
                 'code' => 1,
                 'message' => 'errmsg',
                 'error_subcode' => 0,
                 'type' => 'exception'
-            ],
-        ];
+            ),
+        );
 
         $response = new FacebookResponse($this->request, json_encode($params), 500);
         $exception = FacebookResponseException::create($response);
@@ -137,14 +137,14 @@ class FacebookResponseExceptionTest extends \PHPUnit_Framework_TestCase
 
     public function testThrottleExceptions()
     {
-        $params = [
-            'error' => [
+        $params = array(
+            'error' => array(
                 'code' => 4,
                 'message' => 'errmsg',
                 'error_subcode' => 0,
                 'type' => 'exception'
-            ],
-        ];
+            ),
+        );
         $response = new FacebookResponse($this->request, json_encode($params), 401);
         $exception = FacebookResponseException::create($response);
         $this->assertInstanceOf('Facebook\Exceptions\FacebookThrottleException', $exception->getPrevious());
@@ -170,14 +170,14 @@ class FacebookResponseExceptionTest extends \PHPUnit_Framework_TestCase
 
     public function testUserIssueExceptions()
     {
-        $params = [
-            'error' => [
+        $params = array(
+            'error' => array(
                 'code' => 230,
                 'message' => 'errmsg',
                 'error_subcode' => 459,
                 'type' => 'exception'
-            ],
-        ];
+            ),
+        );
         $response = new FacebookResponse($this->request, json_encode($params), 401);
         $exception = FacebookResponseException::create($response);
         $this->assertInstanceOf('Facebook\Exceptions\FacebookAuthenticationException', $exception->getPrevious());
@@ -197,14 +197,14 @@ class FacebookResponseExceptionTest extends \PHPUnit_Framework_TestCase
 
     public function testAuthorizationExceptions()
     {
-        $params = [
-            'error' => [
+        $params = array(
+            'error' => array(
                 'code' => 10,
                 'message' => 'errmsg',
                 'error_subcode' => 0,
                 'type' => 'exception'
-            ],
-        ];
+            ),
+        );
         $response = new FacebookResponse($this->request, json_encode($params), 401);
         $exception = FacebookResponseException::create($response);
         $this->assertInstanceOf('Facebook\Exceptions\FacebookAuthorizationException', $exception->getPrevious());
@@ -236,14 +236,14 @@ class FacebookResponseExceptionTest extends \PHPUnit_Framework_TestCase
 
     public function testClientExceptions()
     {
-        $params = [
-            'error' => [
+        $params = array(
+            'error' => array(
                 'code' => 506,
                 'message' => 'errmsg',
                 'error_subcode' => 0,
                 'type' => 'exception'
-            ],
-        ];
+            ),
+        );
         $response = new FacebookResponse($this->request, json_encode($params), 401);
         $exception = FacebookResponseException::create($response);
         $this->assertInstanceOf('Facebook\Exceptions\FacebookClientException', $exception->getPrevious());
@@ -257,14 +257,14 @@ class FacebookResponseExceptionTest extends \PHPUnit_Framework_TestCase
 
     public function testOtherException()
     {
-        $params = [
-            'error' => [
+        $params = array(
+            'error' => array(
                 'code' => 42,
                 'message' => 'ship love',
                 'error_subcode' => 0,
                 'type' => 'feature'
-            ],
-        ];
+            ),
+        );
         $response = new FacebookResponse($this->request, json_encode($params), 200);
         $exception = FacebookResponseException::create($response);
         $this->assertInstanceOf('Facebook\Exceptions\FacebookOtherException', $exception->getPrevious());

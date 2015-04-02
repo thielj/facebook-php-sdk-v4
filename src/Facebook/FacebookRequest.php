@@ -243,7 +243,7 @@ class FacebookRequest
             throw new FacebookSDKException('HTTP method not specified.');
         }
 
-        if (!in_array($this->method, ['GET', 'POST', 'DELETE'])) {
+        if (!in_array($this->method, array('GET', 'POST', 'DELETE'))) {
             throw new FacebookSDKException('Invalid HTTP method specified.');
         }
     }
@@ -266,7 +266,7 @@ class FacebookRequest
         }
 
         // Clean the token & app secret proof from the endpoint.
-        $filterParams = ['access_token', 'appsecret_proof'];
+        $filterParams = array('access_token', 'appsecret_proof'];
         $this->endpoint = FacebookUrlManipulator::removeParamsFromUrl($endpoint, $filterParams);
 
         return $this;
@@ -528,9 +528,9 @@ class FacebookRequest
      */
     public static function getDefaultHeaders()
     {
-        return [
+        return array(
             'User-Agent' => 'fb-php-' . Facebook::VERSION,
             'Accept-Encoding' => '*',
-        ];
+        );
     }
 }

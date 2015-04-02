@@ -242,9 +242,9 @@ class FacebookResponse
             // Backwards compatibility for Graph < 2.1.
             // Mimics 2.1 responses.
             // @TODO Remove this after Graph 2.0 is no longer supported
-            $this->decodedBody = ['success' => $this->decodedBody];
+            $this->decodedBody = array('success' => $this->decodedBody];
         } elseif (is_numeric($this->decodedBody)) {
-            $this->decodedBody = ['id' => $this->decodedBody];
+            $this->decodedBody = array('id' => $this->decodedBody];
         }
 
         if (!is_array($this->decodedBody)) {

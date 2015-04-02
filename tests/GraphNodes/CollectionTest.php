@@ -30,7 +30,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 
     public function testAnExistingPropertyCanBeAccessed()
     {
-        $graphObject = new Collection(['foo' => 'bar']);
+        $graphObject = new Collection(array('foo' => 'bar']);
         $property = $graphObject->getProperty('foo');
 
         $this->assertEquals('bar', $property);
@@ -38,7 +38,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 
     public function testAMissingPropertyWillReturnNull()
     {
-        $graphObject = new Collection(['foo' => 'bar']);
+        $graphObject = new Collection(array('foo' => 'bar']);
         $property = $graphObject->getProperty('baz');
 
         $this->assertNull($property, 'Expected the property to return null.');
@@ -46,7 +46,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 
     public function testAMissingPropertyWillReturnTheDefault()
     {
-        $graphObject = new Collection(['foo' => 'bar']);
+        $graphObject = new Collection(array('foo' => 'bar']);
         $property = $graphObject->getProperty('baz', 'faz');
 
         $this->assertEquals('faz', $property);
@@ -54,25 +54,25 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 
     public function testTheKeysFromTheCollectionCanBeReturned()
     {
-        $graphObject = new Collection([
+        $graphObject = new Collection(array(
             'key1' => 'foo',
             'key2' => 'bar',
             'key3' => 'baz',
         ]);
         $propertyKeys = $graphObject->getPropertyNames();
 
-        $this->assertEquals(['key1', 'key2', 'key3'], $propertyKeys);
+        $this->assertEquals(array('key1', 'key2', 'key3'], $propertyKeys);
     }
 
     public function testAnArrayCanBeInjectedViaTheConstructor()
     {
-        $collection = new Collection(['foo', 'bar']);
-        $this->assertEquals(['foo', 'bar'], $collection->asArray());
+        $collection = new Collection(array('foo', 'bar']);
+        $this->assertEquals(array('foo', 'bar'], $collection->asArray());
     }
 
     public function testACollectionCanBeConvertedToProperJson()
     {
-        $collection = new Collection(['foo', 'bar', 123]);
+        $collection = new Collection(array('foo', 'bar', 123]);
 
         $collectionAsString = $collection->asJson();
 
@@ -81,7 +81,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 
     public function testACollectionCanBeCounted()
     {
-        $collection = new Collection(['foo', 'bar', 'baz']);
+        $collection = new Collection(array('foo', 'bar', 'baz']);
 
         $collectionCount = count($collection);
 
@@ -90,7 +90,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 
     public function testACollectionCanBeAccessedAsAnArray()
     {
-        $collection = new Collection(['foo' => 'bar', 'faz' => 'baz']);
+        $collection = new Collection(array('foo' => 'bar', 'faz' => 'baz']);
 
         $this->assertEquals('bar', $collection['foo']);
         $this->assertEquals('baz', $collection['faz']);
@@ -98,7 +98,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 
     public function testACollectionCanBeIteratedOver()
     {
-        $collection = new Collection(['foo' => 'bar', 'faz' => 'baz']);
+        $collection = new Collection(array('foo' => 'bar', 'faz' => 'baz']);
 
         $this->assertInstanceOf('IteratorAggregate', $collection);
 
@@ -108,6 +108,6 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
             $newArray[$k] = $v;
         }
 
-        $this->assertEquals(['foo' => 'bar', 'faz' => 'baz'], $newArray);
+        $this->assertEquals(array('foo' => 'bar', 'faz' => 'baz'], $newArray);
     }
 }

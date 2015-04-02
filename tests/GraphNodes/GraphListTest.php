@@ -35,16 +35,16 @@ class GraphListTest extends \PHPUnit_Framework_TestCase
      */
     protected $request;
 
-    protected $basePagination = [
+    protected $basePagination = array(
         'next' => 'https://graph.facebook.com/v7.12/998899/photos?pretty=0&limit=25&after=foo_after_cursor',
         'previous' => 'https://graph.facebook.com/v7.12/998899/photos?pretty=0&limit=25&before=foo_before_cursor',
-    ];
-    protected $cursorPagination = [
-        'cursors' => [
+    );
+    protected $cursorPagination = array(
+        'cursors' => array(
             'after' => 'bar_after_cursor',
             'before' => 'bar_before_cursor',
-        ],
-    ];
+        ),
+    );
 
     public function setUp()
     {
@@ -54,7 +54,7 @@ class GraphListTest extends \PHPUnit_Framework_TestCase
             'foo_token',
             'GET',
             '/me/photos?keep=me',
-            ['foo' => 'bar'],
+            array('foo' => 'bar'],
             'foo_eTag',
             'v1337'
         );
@@ -75,7 +75,7 @@ class GraphListTest extends \PHPUnit_Framework_TestCase
         $graphList = new GraphList(
             $this->request,
             array(),
-            ['paging' => $this->basePagination]
+            array('paging' => $this->basePagination]
         );
         $nextPage = $graphList->getPaginationUrl('next');
         $prevPage = $graphList->getPaginationUrl('previous');
@@ -89,7 +89,7 @@ class GraphListTest extends \PHPUnit_Framework_TestCase
         $graphList = new GraphList(
             $this->request,
             array(),
-            ['paging' => $this->cursorPagination],
+            array('paging' => $this->cursorPagination],
             '/1234567890/likes'
         );
         $nextPage = $graphList->getPaginationUrl('next');
@@ -104,7 +104,7 @@ class GraphListTest extends \PHPUnit_Framework_TestCase
         $graphList = new GraphList(
             $this->request,
             array(),
-            ['paging' => $this->cursorPagination],
+            array('paging' => $this->cursorPagination],
             '/1234567890/likes'
         );
         $nextPage = $graphList->getNextPageRequest();

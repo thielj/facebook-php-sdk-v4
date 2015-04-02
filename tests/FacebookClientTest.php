@@ -156,10 +156,10 @@ class FacebookClientTest extends \PHPUnit_Framework_TestCase
 
     public function testAFacebookBatchRequestEntityCanBeUsedToSendABatchRequestToGraph()
     {
-        $fbRequests = [
+        $fbRequests = array(
             new FacebookRequest($this->fbApp, 'token', 'GET', '/foo'),
             new FacebookRequest($this->fbApp, 'token', 'POST', '/bar'),
-        ];
+        );
         $fbBatchRequest = new FacebookBatchRequest($this->fbApp, $fbRequests);
 
         $fbBatchClient = new FacebookClient(new MyFooBatchClientHandler());
@@ -172,7 +172,7 @@ class FacebookClientTest extends \PHPUnit_Framework_TestCase
 
     public function testAFacebookBatchRequestWillProperlyBatchFiles()
     {
-        $fbRequests = [
+        $fbRequests = array(
             new FacebookRequest($this->fbApp, 'token', 'POST', '/photo', [
                 'message' => 'foobar',
                 'source' => new FacebookFile(__DIR__ . '/foo.txt'),
@@ -181,7 +181,7 @@ class FacebookClientTest extends \PHPUnit_Framework_TestCase
                 'message' => 'foobar',
                 'source' => new FacebookVideo(__DIR__ . '/foo.txt'),
             ]),
-        ];
+        );
         $fbBatchRequest = new FacebookBatchRequest($this->fbApp, $fbRequests);
         $fbBatchRequest->prepareRequestsForBatch();
 
@@ -227,12 +227,12 @@ class FacebookClientTest extends \PHPUnit_Framework_TestCase
 
         // Create a test user
         $testUserPath = '/' . FacebookTestCredentials::$appId . '/accounts/test-users';
-        $params = [
+        $params = array(
             'installed' => true,
             'name' => 'Foo Phpunit User',
             'locale' => 'en_US',
             'permissions' => implode(',', ['read_stream', 'user_photos']),
-        ];
+        );
 
         $request = new FacebookRequest(
             static::$testFacebookApp,

@@ -41,9 +41,9 @@ class GraphUserTest extends \PHPUnit_Framework_TestCase
 
     public function testDatesGetCastToDateTime()
     {
-        $dataFromGraph = [
+        $dataFromGraph = array(
             'birthday' => '1984-01-01',
-        ];
+        );
 
         $this->responseMock
             ->shouldReceive('getDecodedBody')
@@ -59,18 +59,18 @@ class GraphUserTest extends \PHPUnit_Framework_TestCase
 
     public function testPagePropertiesWillGetCastAsGraphPageObjects()
     {
-        $dataFromGraph = [
+        $dataFromGraph = array(
             'id' => '123',
             'name' => 'Foo User',
-            'hometown' => [
+            'hometown' => array(
                 'id' => '1',
                 'name' => 'Foo Place',
-            ],
-            'location' => [
+            ),
+            'location' => array(
                 'id' => '2',
                 'name' => 'Bar Place',
-            ],
-        ];
+            ),
+        );
 
         $this->responseMock
             ->shouldReceive('getDecodedBody')
@@ -88,14 +88,14 @@ class GraphUserTest extends \PHPUnit_Framework_TestCase
 
     public function testUserPropertiesWillGetCastAsGraphUserObjects()
     {
-        $dataFromGraph = [
+        $dataFromGraph = array(
             'id' => '123',
             'name' => 'Foo User',
-            'significant_other' => [
+            'significant_other' => array(
                 'id' => '1337',
                 'name' => 'Bar User',
-            ],
-        ];
+            ),
+        );
 
         $this->responseMock
             ->shouldReceive('getDecodedBody')
@@ -111,16 +111,16 @@ class GraphUserTest extends \PHPUnit_Framework_TestCase
 
     public function testPicturePropertiesWillGetCastAsGraphPictureObjects()
     {
-        $dataFromGraph = [
+        $dataFromGraph = array(
             'id' => '123',
             'name' => 'Foo User',
-            'picture' => [
+            'picture' => array(
                 'is_silhouette' => true,
                 'url' => 'http://foo.bar',
                 'width' => 200,
                 'height' => 200,
-            ],
-        ];
+            ),
+        );
 
         $this->responseMock
             ->shouldReceive('getDecodedBody')

@@ -46,10 +46,10 @@ class FacebookStreamHttpClientTest extends AbstractTestHttpClient
 
     public function testCanCompileHeader()
     {
-        $headers = [
+        $headers = array(
             'X-foo' => 'bar',
             'X-bar' => 'faz',
-        ];
+        );
         $header = $this->streamClient->compileHeader($headers);
         $this->assertEquals("X-foo: bar\r\nX-bar: faz", $header);
     }
@@ -64,7 +64,7 @@ class FacebookStreamHttpClientTest extends AbstractTestHttpClient
                     return false;
                 }
 
-                if ($arg['http'] !== [
+                if ($arg['http'] !== array(
                         'method' => 'GET',
                         'header' => 'X-foo: bar',
                         'content' => 'foo_body',

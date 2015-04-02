@@ -28,9 +28,9 @@ class GraphAchievementTest extends GraphNodeTest
 
     public function testIdIsString()
     {
-        $dataFromGraph = [
+        $dataFromGraph = array(
             'id' => '1337'
-        ];
+        );
 
         $factory = $this->makeFactoryWithData($dataFromGraph);
         $graphObject = $factory->makeGraphAchievement();
@@ -42,9 +42,9 @@ class GraphAchievementTest extends GraphNodeTest
 
     public function testTypeIsAlwaysString()
     {
-        $dataFromGraph = [
+        $dataFromGraph = array(
             'id' => '1337'
-        ];
+        );
 
         $factory = $this->makeFactoryWithData($dataFromGraph);
         $graphObject = $factory->makeGraphAchievement();
@@ -56,9 +56,9 @@ class GraphAchievementTest extends GraphNodeTest
 
     public function testNoFeedStoryIsBoolean()
     {
-        $dataFromGraph = [
+        $dataFromGraph = array(
             'no_feed_story' => (rand(0, 1) == 1)
-        ];
+        );
 
         $factory = $this->makeFactoryWithData($dataFromGraph);
         $graphObject = $factory->makeGraphAchievement();
@@ -70,9 +70,9 @@ class GraphAchievementTest extends GraphNodeTest
 
     public function testDatesGetCastToDateTime()
     {
-        $dataFromGraph = [
+        $dataFromGraph = array(
             'publish_time' => '2014-07-15T03:54:34+0000'
-        ];
+        );
 
         $factory = $this->makeFactoryWithData($dataFromGraph);
         $graphObject = $factory->makeGraphAchievement();
@@ -84,12 +84,12 @@ class GraphAchievementTest extends GraphNodeTest
 
     public function testFromGetsCastAsGraphUser()
     {
-        $dataFromGraph = [
-            'from' => [
+        $dataFromGraph = array(
+            'from' => array(
                 'id' => '1337',
                 'name' => 'Foo McBar'
             ]
-        ];
+        );
 
         $factory = $this->makeFactoryWithData($dataFromGraph);
         $graphObject = $factory->makeGraphAchievement();
@@ -101,11 +101,11 @@ class GraphAchievementTest extends GraphNodeTest
 
     public function testApplicationGetsCastAsGraphApplication()
     {
-        $dataFromGraph = [
-            'application' => [
+        $dataFromGraph = array(
+            'application' => array(
                 'id' => '1337'
             ]
-        ];
+        );
 
         $factory = $this->makeFactoryWithData($dataFromGraph);
         $graphObject = $factory->makeGraphAchievement();

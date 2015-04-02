@@ -32,62 +32,62 @@ class FacebookUrlManipulatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testParamsGetRemovedFromAUrl($dirtyUrl, $expectedCleanUrl)
     {
-        $removeParams = [
+        $removeParams = array(
             'state',
             'code',
             'error',
             'error_reason',
             'error_description',
             'error_code',
-        ];
+        );
         $currentUri = FacebookUrlManipulator::removeParamsFromUrl($dirtyUrl, $removeParams);
         $this->assertEquals($expectedCleanUrl, $currentUri);
     }
 
     public function provideUris()
     {
-        return [
-            [
+        return array(
+            array(
                 'http://localhost/something?state=0000&foo=bar&code=abcd',
                 'http://localhost/something?foo=bar',
-            ],
-            [
+            ),
+            array(
                 'https://localhost/something?state=0000&foo=bar&code=abcd',
                 'https://localhost/something?foo=bar',
-            ],
-            [
+            ),
+            array(
                 'http://localhost/something?state=0000&foo=bar&error=abcd&error_reason=abcd&error_description=abcd&error_code=1',
                 'http://localhost/something?foo=bar',
-            ],
-            [
+            ),
+            array(
                 'https://localhost/something?state=0000&foo=bar&error=abcd&error_reason=abcd&error_description=abcd&error_code=1',
                 'https://localhost/something?foo=bar',
-            ],
-            [
+            ),
+            array(
                 'http://localhost/something?state=0000&foo=bar&error=abcd',
                 'http://localhost/something?foo=bar',
-            ],
-            [
+            ),
+            array(
                 'https://localhost/something?state=0000&foo=bar&error=abcd',
                 'https://localhost/something?foo=bar',
-            ],
-            [
+            ),
+            array(
                 'https://localhost:1337/something?state=0000&foo=bar&error=abcd',
                 'https://localhost:1337/something?foo=bar',
-            ],
-            [
+            ),
+            array(
                 'https://localhost:1337/something?state=0000&code=foo',
                 'https://localhost:1337/something',
-            ],
-            [
+            ),
+            array(
                 'https://localhost/something/?state=0000&code=foo&foo=bar',
                 'https://localhost/something/?foo=bar',
-            ],
-            [
+            ),
+            array(
                 'https://localhost/something/?state=0000&code=foo',
                 'https://localhost/something/',
-            ],
-        ];
+            ),
+        );
     }
 
     public function testGracefullyHandlesUrlAppending()
@@ -97,24 +97,24 @@ class FacebookUrlManipulatorTest extends \PHPUnit_Framework_TestCase
         $processed_url = FacebookUrlManipulator::appendParamsToUrl($url, $params);
         $this->assertEquals('https://www.foo.com/', $processed_url);
 
-        $params = [
+        $params = array(
             'access_token' => 'foo',
-        ];
+        );
         $url = 'https://www.foo.com/';
         $processed_url = FacebookUrlManipulator::appendParamsToUrl($url, $params);
         $this->assertEquals('https://www.foo.com/?access_token=foo', $processed_url);
 
-        $params = [
+        $params = array(
             'access_token' => 'foo',
             'bar' => 'baz',
-        ];
+        );
         $url = 'https://www.foo.com/?foo=bar';
         $processed_url = FacebookUrlManipulator::appendParamsToUrl($url, $params);
         $this->assertEquals('https://www.foo.com/?access_token=foo&bar=baz&foo=bar', $processed_url);
 
-        $params = [
+        $params = array(
             'access_token' => 'foo',
-        ];
+        );
         $url = 'https://www.foo.com/?foo=bar&access_token=bar';
         $processed_url = FacebookUrlManipulator::appendParamsToUrl($url, $params);
         $this->assertEquals('https://www.foo.com/?access_token=bar&foo=bar', $processed_url);
@@ -145,11 +145,11 @@ class FacebookUrlManipulatorTest extends \PHPUnit_Framework_TestCase
         $paramsFour = FacebookUrlManipulator::getParamsAsArray('https://www.foo.com/?');
         $paramsFive = FacebookUrlManipulator::getParamsAsArray('https://www.foo.com/?foo=bar');
 
-        $this->assertEquals([], $paramsOne);
-        $this->assertEquals(['one' => '1', 'two' => '2'], $paramsTwo);
-        $this->assertEquals([], $paramsThree);
-        $this->assertEquals([], $paramsFour);
-        $this->assertEquals(['foo' => 'bar'], $paramsFive);
+        $this->assertEquals(array(), $paramsOne);
+        $this->assertEquals(array('one' => '1', 'two' => '2'], $paramsTwo);
+        $this->assertEquals(array(), $paramsThree);
+        $this->assertEquals(array(), $paramsFour);
+        $this->assertEquals(array('foo' => 'bar'], $paramsFive);
     }
 
     /**
@@ -164,28 +164,28 @@ class FacebookUrlManipulatorTest extends \PHPUnit_Framework_TestCase
 
     public function provideMergableEndpoints()
     {
-        return [
-            [
+        return array(
+            array(
                 'https://www.foo.com/?foo=ignore_foo&dance=fun',
                 '/me?foo=keep_foo',
                 '/me?dance=fun&foo=keep_foo',
-            ],
-            [
+            ),
+            array(
                 'https://www.bar.com?',
                 'https://foo.com?foo=bar',
                 'https://foo.com?foo=bar',
-            ],
-            [
+            ),
+            array(
                 'you',
                 'me',
                 'me',
-            ],
-            [
+            ),
+            array(
                 '/1234?swing=fun',
                 '/1337?bar=baz&west=coast',
                 '/1337?bar=baz&swing=fun&west=coast',
-            ],
-        ];
+            ),
+        );
     }
 
     public function testGraphUrlsCanBeTrimmed()

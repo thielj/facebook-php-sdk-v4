@@ -51,13 +51,13 @@ class FacebookGuzzleHttpClient implements FacebookHttpClientInterface
      */
     public function send($url, $method, $body, array $headers, $timeOut)
     {
-        $options = [
+        $options = array(
             'headers' => $headers,
             'body' => $body,
             'timeout' => $timeOut,
             'connect_timeout' => 10,
             'verify' => __DIR__ . '/certs/DigiCertHighAssuranceEVRootCA.pem',
-        ];
+        );
         $request = $this->guzzleClient->createRequest($method, $url, $options);
 
         try {

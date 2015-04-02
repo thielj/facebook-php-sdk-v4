@@ -86,10 +86,10 @@ class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate,
         }
 
         $this->addFallbackDefaults($request);
-        $requestToAdd = [
+        $requestToAdd = array(
             'name' => $name,
             'request' => $request,
-        ];
+        );
 
         // File uploads
         $attachedFiles = $this->extractFileAttachments($request);
@@ -175,10 +175,10 @@ class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate,
     {
         $this->validateBatchRequestCount();
 
-        $params = [
+        $params = array(
             'batch' => $this->convertRequestsToJson(),
             'include_headers' => true,
-        ];
+        );
         $this->setParams($params);
     }
 
@@ -231,11 +231,11 @@ class FacebookBatchRequest extends FacebookRequest implements IteratorAggregate,
             $compiledHeaders[] = $name . ': ' . $value;
         }
 
-        $batch = [
+        $batch = array(
             'headers' => $compiledHeaders,
             'method' => $request->getMethod(),
             'relative_url' => $request->getUrl(),
-        ];
+        );
 
         // Since file uploads are moved to the root request of a batch request,
         // the child requests will always be URL-encoded.

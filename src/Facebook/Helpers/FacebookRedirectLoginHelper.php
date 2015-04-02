@@ -191,10 +191,10 @@ class FacebookRedirectLoginHelper
             throw new FacebookSDKException('Cannot generate a logout URL with an app access token.', 722);
         }
 
-        $params = [
+        $params = array(
             'next' => $next,
             'access_token' => $accessToken->getValue(),
-        ];
+        );
 
         return 'https://www.facebook.com/logout.php?' . http_build_query($params, null, $separator);
     }
@@ -210,7 +210,7 @@ class FacebookRedirectLoginHelper
      */
     public function getReRequestUrl($redirectUrl, array $scope = array(), $separator = '&')
     {
-        $params = ['auth_type' => 'rerequest'];
+        $params = array('auth_type' => 'rerequest'];
 
         return $this->makeUrl($redirectUrl, $scope, $params, $separator);
     }
@@ -226,7 +226,7 @@ class FacebookRedirectLoginHelper
      */
     public function getReAuthenticationUrl($redirectUrl, array $scope = array(), $separator = '&')
     {
-        $params = ['auth_type' => 'reauthenticate'];
+        $params = array('auth_type' => 'reauthenticate'];
 
         return $this->makeUrl($redirectUrl, $scope, $params, $separator);
     }
@@ -250,7 +250,7 @@ class FacebookRedirectLoginHelper
 
         $redirectUrl = $redirectUrl ?: $this->urlDetectionHandler->getCurrentUrl();
         // At minimum we need to remove the state param
-        $redirectUrl = FacebookUrlManipulator::removeParamsFromUrl($redirectUrl, ['state']);
+        $redirectUrl = FacebookUrlManipulator::removeParamsFromUrl($redirectUrl, array('state']);
 
         return $this->oAuth2Client->getAccessTokenFromCode($code, $redirectUrl);
     }

@@ -112,11 +112,11 @@ class FacebookBatchRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testAddingRequestsWillBeFormattedInAnArrayProperly()
     {
-        $requests = [
+        $requests = array(
             null => new FacebookRequest(null, null, 'GET', '/foo'),
             'my-second-request' => new FacebookRequest(null, null, 'POST', '/bar', ['foo' => 'bar']),
             'my-third-request' => new FacebookRequest(null, null, 'DELETE', '/baz')
-        ];
+        );
 
         $batchRequest = $this->createBatchRequest();
         $batchRequest->add($requests[null]);
@@ -130,11 +130,11 @@ class FacebookBatchRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testANumericArrayOfRequestsCanBeAdded()
     {
-        $requests = [
+        $requests = array(
             new FacebookRequest(null, null, 'GET', '/foo'),
             new FacebookRequest(null, null, 'POST', '/bar', ['foo' => 'bar']),
             new FacebookRequest(null, null, 'DELETE', '/baz'),
-        ];
+        );
 
         $formattedRequests = $this->createBatchRequestWithRequests($requests)->getRequests();
 
@@ -143,11 +143,11 @@ class FacebookBatchRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testAnAssociativeArrayOfRequestsCanBeAdded()
     {
-        $requests = [
+        $requests = array(
             'req-one' => new FacebookRequest(null, null, 'GET', '/foo'),
             'req-two' => new FacebookRequest(null, null, 'POST', '/bar', ['foo' => 'bar']),
             'req-three' => new FacebookRequest(null, null, 'DELETE', '/baz'),
-        ];
+        );
 
         $formattedRequests = $this->createBatchRequestWithRequests($requests)->getRequests();
 
@@ -156,11 +156,11 @@ class FacebookBatchRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testRequestsCanBeInjectedIntoConstructor()
     {
-        $requests = [
+        $requests = array(
             new FacebookRequest(null, null, 'GET', '/foo'),
             new FacebookRequest(null, null, 'POST', '/bar', ['foo' => 'bar']),
             new FacebookRequest(null, null, 'DELETE', '/baz'),
-        ];
+        );
 
         $batchRequest = new FacebookBatchRequest($this->app, $requests, 'foo_token');
         $formattedRequests = $batchRequest->getRequests();
@@ -218,36 +218,36 @@ class FacebookBatchRequestTest extends \PHPUnit_Framework_TestCase
         $headers = $this->defaultHeaders();
         $apiVersion = Facebook::DEFAULT_GRAPH_VERSION;
 
-        return [
-            [
+        return array(
+            array(
                 new FacebookRequest(null, null, 'GET', '/foo', ['foo' => 'bar']),
-                [
+                array(
                     'headers' => $headers,
                     'method' => 'GET',
                     'relative_url' => '/' . $apiVersion . '/foo?foo=bar&access_token=foo_token&appsecret_proof=df4256903ba4e23636cc142117aa632133d75c642bd2a68955be1443bd14deb9',
                     'name' => 'foo_name',
-                ],
-            ],
-            [
+                ),
+            ),
+            array(
                 new FacebookRequest(null, null, 'POST', '/bar', ['bar' => 'baz']),
-                [
+                array(
                     'headers' => $headers,
                     'method' => 'POST',
                     'relative_url' => '/' . $apiVersion . '/bar',
                     'body' => 'bar=baz&access_token=foo_token&appsecret_proof=df4256903ba4e23636cc142117aa632133d75c642bd2a68955be1443bd14deb9',
                     'name' => 'foo_name',
-                ],
-            ],
-            [
+                ),
+            ),
+            array(
                 new FacebookRequest(null, null, 'DELETE', '/bar'),
-                [
+                array(
                     'headers' => $headers,
                     'method' => 'DELETE',
                     'relative_url' => '/' . $apiVersion . '/bar?access_token=foo_token&appsecret_proof=df4256903ba4e23636cc142117aa632133d75c642bd2a68955be1443bd14deb9',
                     'name' => 'foo_name',
-                ],
-            ],
-        ];
+                ),
+            ),
+        );
     }
 
     public function testBatchRequestsWithFilesGetConvertedToAnArray()
@@ -255,7 +255,7 @@ class FacebookBatchRequestTest extends \PHPUnit_Framework_TestCase
         $request = new FacebookRequest(null, null, 'POST', '/bar', [
             'message' => 'foobar',
             'source' => new FacebookFile(__DIR__ . '/foo.txt'),
-        ]);
+        ));
 
         $batchRequest = $this->createBatchRequest();
         $batchRequest->add($request, 'foo_name');
@@ -270,14 +270,14 @@ class FacebookBatchRequestTest extends \PHPUnit_Framework_TestCase
             $attachedFiles
         );
 
-        $this->assertEquals([
+        $this->assertEquals(array(
             'headers' => $this->defaultHeaders(),
             'method' => 'POST',
             'relative_url' => '/' . Facebook::DEFAULT_GRAPH_VERSION . '/bar',
             'body' => 'message=foobar&access_token=foo_token&appsecret_proof=df4256903ba4e23636cc142117aa632133d75c642bd2a68955be1443bd14deb9',
             'name' => 'foo_name',
             'attached_files' => $attachedFiles,
-        ], $batchRequestArray);
+        ), $batchRequestArray);
     }
 
     public function testPreppingABatchRequestProperlySetsThePostParams()
@@ -291,13 +291,13 @@ class FacebookBatchRequestTest extends \PHPUnit_Framework_TestCase
 
         $expectedHeaders = json_encode($this->defaultHeaders());
         $version = Facebook::DEFAULT_GRAPH_VERSION;
-        $expectedBatchParams = [
+        $expectedBatchParams = array(
             'batch' => '[{"headers":' . $expectedHeaders . ',"method":"GET","relative_url":"\\/' . $version . '\\/foo?access_token=bar_token&appsecret_proof=2ceec40b7b9fd7d38fff1767b766bcc6b1f9feb378febac4612c156e6a8354bd","name":"foo_name"},'
                 . '{"headers":' . $expectedHeaders . ',"method":"POST","relative_url":"\\/' . $version . '\\/bar","body":"foo=bar&access_token=foo_token&appsecret_proof=df4256903ba4e23636cc142117aa632133d75c642bd2a68955be1443bd14deb9"}]',
             'include_headers' => true,
             'access_token' => 'foo_token',
             'appsecret_proof' => 'df4256903ba4e23636cc142117aa632133d75c642bd2a68955be1443bd14deb9',
-        ];
+        );
         $this->assertEquals($expectedBatchParams, $params);
     }
 
@@ -308,7 +308,7 @@ class FacebookBatchRequestTest extends \PHPUnit_Framework_TestCase
         $batchRequest->add(new FacebookRequest(null, null, 'POST', '/me/photos', [
             'message' => 'foobar',
             'source' => new FacebookFile(__DIR__ . '/foo.txt'),
-        ]));
+        )));
         $batchRequest->prepareRequestsForBatch();
 
         $params = $batchRequest->getParams();
@@ -318,13 +318,13 @@ class FacebookBatchRequestTest extends \PHPUnit_Framework_TestCase
 
         $expectedHeaders = json_encode($this->defaultHeaders());
         $version = Facebook::DEFAULT_GRAPH_VERSION;
-        $expectedBatchParams = [
+        $expectedBatchParams = array(
             'batch' => '[{"headers":' . $expectedHeaders . ',"method":"GET","relative_url":"\\/' . $version . '\\/foo?access_token=bar_token&appsecret_proof=2ceec40b7b9fd7d38fff1767b766bcc6b1f9feb378febac4612c156e6a8354bd","name":"foo_name"},'
                 . '{"headers":' . $expectedHeaders . ',"method":"POST","relative_url":"\\/' . $version . '\\/me\\/photos","body":"message=foobar&access_token=foo_token&appsecret_proof=df4256903ba4e23636cc142117aa632133d75c642bd2a68955be1443bd14deb9","attached_files":"' . $attachedFiles . '"}]',
             'include_headers' => true,
             'access_token' => 'foo_token',
             'appsecret_proof' => 'df4256903ba4e23636cc142117aa632133d75c642bd2a68955be1443bd14deb9',
-        ];
+        );
         $this->assertEquals($expectedBatchParams, $params);
     }
 
@@ -371,10 +371,10 @@ class FacebookBatchRequestTest extends \PHPUnit_Framework_TestCase
     {
         $expectedRequests = array();
         foreach ($requests as $name => $request) {
-            $expectedRequests[] = [
+            $expectedRequests[] = array(
                 'name' => $name,
                 'request' => $request
-            ];
+            );
         }
         $this->assertEquals($expectedRequests, $formattedRequests);
     }

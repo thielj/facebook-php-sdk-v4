@@ -29,7 +29,7 @@ class RequestUrlEncodedTest extends \PHPUnit_Framework_TestCase
 {
     public function testCanProperlyEncodeAnArrayOfParams()
     {
-        $message = new RequestBodyUrlEncoded([
+        $message = new RequestBodyUrlEncoded(array(
             'foo' => 'bar',
             'scawy_vawues' => '@FooBar is a real twitter handle.',
         ]);

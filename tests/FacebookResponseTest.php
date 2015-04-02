@@ -42,7 +42,7 @@ class FacebookResponseTest extends \PHPUnit_Framework_TestCase
             'foo_token',
             'GET',
             '/me/photos?keep=me',
-            ['foo' => 'bar'],
+            array('foo' => 'bar'],
             'foo_eTag',
             'v1337'
         );
@@ -75,10 +75,10 @@ class FacebookResponseTest extends \PHPUnit_Framework_TestCase
         $graphObject = $response->getGraphObject();
 
         $this->assertFalse($response->isError(), 'Did not expect Response to return an error.');
-        $this->assertEquals([
+        $this->assertEquals(array(
             'id' => '123',
             'name' => 'Foo',
-        ], $decodedResponse);
+        ), $decodedResponse);
         $this->assertInstanceOf('Facebook\GraphNodes\GraphObject', $graphObject);
     }
 
@@ -102,10 +102,10 @@ class FacebookResponseTest extends \PHPUnit_Framework_TestCase
         $decodedResponse = $response->getDecodedBody();
 
         $this->assertFalse($response->isError(), 'Did not expect Response to return an error.');
-        $this->assertEquals([
+        $this->assertEquals(array(
             'id' => '123',
             'name' => 'Foo',
-        ], $decodedResponse);
+        ), $decodedResponse);
     }
 
     public function testErrorStatusCanBeCheckedWhenAnErrorResponseIsReturned()

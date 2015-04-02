@@ -41,12 +41,12 @@ class GraphAlbumTest extends \PHPUnit_Framework_TestCase
 
     public function testDatesGetCastToDateTime()
     {
-        $dataFromGraph = [
+        $dataFromGraph = array(
             'created_time' => '2014-07-15T03:54:34+0000',
             'updated_time' => '2014-07-12T01:24:09+0000',
             'id' => '123',
             'name' => 'Bar',
-        ];
+        );
 
         $this->responseMock
             ->shouldReceive('getDecodedBody')
@@ -64,13 +64,13 @@ class GraphAlbumTest extends \PHPUnit_Framework_TestCase
 
     public function testFromGetsCastAsGraphUser()
     {
-        $dataFromGraph = [
+        $dataFromGraph = array(
             'id' => '123',
-            'from' => [
+            'from' => array(
                 'id' => '1337',
                 'name' => 'Foo McBar',
-            ],
-        ];
+            ),
+        );
 
         $this->responseMock
             ->shouldReceive('getDecodedBody')
@@ -86,14 +86,14 @@ class GraphAlbumTest extends \PHPUnit_Framework_TestCase
 
     public function testPlacePropertyWillGetCastAsGraphPageObject()
     {
-        $dataFromGraph = [
+        $dataFromGraph = array(
             'id' => '123',
             'name' => 'Foo Album',
-            'place' => [
+            'place' => array(
                 'id' => '1',
                 'name' => 'For Bar Place',
             ]
-        ];
+        );
 
         $this->responseMock
             ->shouldReceive('getDecodedBody')
