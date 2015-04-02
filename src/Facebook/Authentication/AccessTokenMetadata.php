@@ -40,7 +40,7 @@ class AccessTokenMetadata
      *
      * @var array
      */
-    protected $metadata = [];
+    protected $metadata = array();
 
     /**
      * Properties that should be cast as DateTime objects.

@@ -52,7 +52,7 @@ class FooFacebookClientForOAuth2Test extends FacebookClient
             $request,
             $this->response,
             200,
-            []
+            array()
         );
     }
 }

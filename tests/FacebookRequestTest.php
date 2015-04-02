@@ -75,7 +75,7 @@ class FacebookRequestTest extends \PHPUnit_Framework_TestCase
     public function testGetHeadersWillAutoAppendETag()
     {
         $app = new FacebookApp('123', 'foo_secret');
-        $request = new FacebookRequest($app, null, 'GET', '/foo', [], 'fooETag');
+        $request = new FacebookRequest($app, null, 'GET', '/foo', array(), 'fooETag');
 
         $headers = $request->getHeaders();
 

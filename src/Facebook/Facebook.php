@@ -126,7 +126,7 @@ class Facebook
      *
      * @throws FacebookSDKException
      */
-    public function __construct(array $config = [])
+    public function __construct(array $config = array())
     {
         $appId = isset($config['app_id']) ? $config['app_id'] : getenv(static::APP_ID_ENV_NAME);
         if (!$appId) {
@@ -369,7 +369,7 @@ class Facebook
         return $this->sendRequest(
             'GET',
             $endpoint,
-            $params = [],
+            $params = array(),
             $accessToken,
             $eTag,
             $graphVersion
@@ -389,7 +389,7 @@ class Facebook
      *
      * @throws FacebookSDKException
      */
-    public function post($endpoint, array $params = [], $accessToken = null, $eTag = null, $graphVersion = null)
+    public function post($endpoint, array $params = array(), $accessToken = null, $eTag = null, $graphVersion = null)
     {
         return $this->sendRequest(
             'POST',
@@ -414,7 +414,7 @@ class Facebook
      *
      * @throws FacebookSDKException
      */
-    public function delete($endpoint, array $params = [], $accessToken = null, $eTag = null, $graphVersion = null)
+    public function delete($endpoint, array $params = array(), $accessToken = null, $eTag = null, $graphVersion = null)
     {
         return $this->sendRequest(
             'DELETE',
@@ -494,7 +494,7 @@ class Facebook
      *
      * @throws FacebookSDKException
      */
-    public function sendRequest($method, $endpoint, array $params = [], $accessToken = null, $eTag = null, $graphVersion = null)
+    public function sendRequest($method, $endpoint, array $params = array(), $accessToken = null, $eTag = null, $graphVersion = null)
     {
         $accessToken = $accessToken ?: $this->defaultAccessToken;
         $graphVersion = $graphVersion ?: $this->defaultGraphVersion;
@@ -542,7 +542,7 @@ class Facebook
      *
      * @throws FacebookSDKException
      */
-    public function request($method, $endpoint, array $params = [], $accessToken = null, $eTag = null, $graphVersion = null)
+    public function request($method, $endpoint, array $params = array(), $accessToken = null, $eTag = null, $graphVersion = null)
     {
         $accessToken = $accessToken ?: $this->defaultAccessToken;
         $graphVersion = $graphVersion ?: $this->defaultGraphVersion;

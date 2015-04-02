@@ -84,7 +84,7 @@ class FacebookStreamHttpClient implements FacebookHttpClientInterface
      */
     public function compileHeader(array $headers)
     {
-        $header = [];
+        $header = array();
         foreach ($headers as $k => $v) {
             $header[] = $k . ': ' . $v;
         }

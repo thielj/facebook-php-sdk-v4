@@ -129,6 +129,6 @@ class FacebookStreamHttpClientTest extends AbstractTestHttpClient
             ->with('http://foo.com/')
             ->andReturn(false);
 
-        $this->streamClient->send('http://foo.com/', 'GET', 'foo_body', [], 60);
+        $this->streamClient->send('http://foo.com/', 'GET', 'foo_body', array(), 60);
     }
 }

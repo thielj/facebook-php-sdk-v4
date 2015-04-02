@@ -233,7 +233,7 @@ class GraphObjectFactory
         // Remember the parent node ID
         $parentNodeId = isset($data['id']) ? $data['id'] : null;
 
-        $items = [];
+        $items = array();
 
         foreach ($data as $k => $v) {
             // Array means could be recurable
@@ -301,7 +301,7 @@ class GraphObjectFactory
             throw new FacebookSDKException('Cannot cast data to GraphList. Expected a "data" key.', 620);
         }
 
-        $dataList = [];
+        $dataList = array();
         foreach ($data['data'] as $graphNode) {
             $dataList[] = $this->safelyMakeGraphObject($graphNode, $subclassName, $parentKey, $parentNodeId);
         }
@@ -337,7 +337,7 @@ class GraphObjectFactory
      */
     public static function isCastableAsGraphList(array $data)
     {
-        if ($data === []) {
+        if ($data === array()) {
             return true;
         }
 

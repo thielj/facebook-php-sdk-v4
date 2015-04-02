@@ -74,7 +74,7 @@ class GraphListTest extends \PHPUnit_Framework_TestCase
     {
         $graphList = new GraphList(
             $this->request,
-            [],
+            array(),
             ['paging' => $this->basePagination]
         );
         $nextPage = $graphList->getPaginationUrl('next');
@@ -88,7 +88,7 @@ class GraphListTest extends \PHPUnit_Framework_TestCase
     {
         $graphList = new GraphList(
             $this->request,
-            [],
+            array(),
             ['paging' => $this->cursorPagination],
             '/1234567890/likes'
         );
@@ -103,7 +103,7 @@ class GraphListTest extends \PHPUnit_Framework_TestCase
     {
         $graphList = new GraphList(
             $this->request,
-            [],
+            array(),
             ['paging' => $this->cursorPagination],
             '/1234567890/likes'
         );

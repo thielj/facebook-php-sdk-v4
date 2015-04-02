@@ -131,7 +131,7 @@ class FacebookCurlHttpClientTest extends AbstractTestHttpClient
             ->once()
             ->andReturn(null);
 
-        $this->curlClient->openConnection('http://bar.com', 'POST', 'baz=bar', [], 60);
+        $this->curlClient->openConnection('http://bar.com', 'POST', 'baz=bar', array(), 60);
     }
 
     public function testCanCloseConnection()
@@ -295,7 +295,7 @@ class FacebookCurlHttpClientTest extends AbstractTestHttpClient
             ->once()
             ->andReturn(null);
 
-        $response = $this->curlClient->send('http://foo.com/', 'GET', '', [], 60);
+        $response = $this->curlClient->send('http://foo.com/', 'GET', '', array(), 60);
 
         $this->assertInstanceOf('Facebook\Http\GraphRawResponse', $response);
         $this->assertEquals($this->fakeRawBody, $response->getBody());
@@ -329,6 +329,6 @@ class FacebookCurlHttpClientTest extends AbstractTestHttpClient
             ->once()
             ->andReturn('Foo error');
 
-        $this->curlClient->send('http://foo.com/', 'GET', '', [], 60);
+        $this->curlClient->send('http://foo.com/', 'GET', '', array(), 60);
     }
 }

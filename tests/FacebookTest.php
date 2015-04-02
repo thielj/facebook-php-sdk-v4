@@ -356,7 +356,7 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
         $request = new FacebookRequest($fb->getApp(), 'foo_token', 'GET');
         $graphList = new GraphList(
             $request,
-            [],
+            array(),
             [
                 'paging' => [
                     'cursors' => [

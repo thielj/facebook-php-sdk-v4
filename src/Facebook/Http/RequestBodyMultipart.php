@@ -44,19 +44,19 @@ class RequestBodyMultipart implements RequestBodyInterface
     /**
      * @var array The parameters to send with this request.
      */
-    protected $params = [];
+    protected $params = array();
 
     /**
      * @var array The files to send with this request.
      */
-    protected $files = [];
+    protected $files = array();
 
     /**
      * @param array  $params   The parameters to send with this request.
      * @param array  $files    The files to send with this request.
      * @param string $boundary Provide a specific boundary.
      */
-    public function __construct(array $params = [], array $files = [], $boundary = null)
+    public function __construct(array $params = array(), array $files = array(), $boundary = null)
     {
         $this->params = $params;
         $this->files = $files;

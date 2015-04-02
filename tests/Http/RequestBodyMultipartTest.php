@@ -33,7 +33,7 @@ class RequestBodyMultipartTest extends \PHPUnit_Framework_TestCase
         $message = new RequestBodyMultipart([
             'foo' => 'bar',
             'scawy_vawues' => '@FooBar is a real twitter handle.',
-        ], [], 'foo_boundary');
+        ], array(), 'foo_boundary');
         $body = $message->getBody();
 
         $expectedBody = "--foo_boundary\r\n";

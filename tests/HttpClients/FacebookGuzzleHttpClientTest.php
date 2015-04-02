@@ -138,6 +138,6 @@ class FacebookGuzzleHttpClientTest extends AbstractTestHttpClient
             ->with($request)
             ->andThrow(new RequestException('Foo', $request));
 
-        $this->guzzleClient->send('http://foo.com/', 'GET', 'foo_body', [], 60);
+        $this->guzzleClient->send('http://foo.com/', 'GET', 'foo_body', array(), 60);
     }
 }
