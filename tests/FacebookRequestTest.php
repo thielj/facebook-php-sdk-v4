@@ -88,7 +88,7 @@ class FacebookRequestTest extends \PHPUnit_Framework_TestCase
     public function testGetParamsWillAutoAppendAccessTokenAndAppSecretProof()
     {
         $app = new FacebookApp('123', 'foo_secret');
-        $request = new FacebookRequest($app, 'foo_token', 'POST', '/foo', ['foo' => 'bar']);
+        $request = new FacebookRequest($app, 'foo_token', 'POST', '/foo', array('foo' => 'bar']);
 
         $params = $request->getParams();
 
@@ -102,7 +102,7 @@ class FacebookRequestTest extends \PHPUnit_Framework_TestCase
     public function testAnAccessTokenCanBeSetFromTheParams()
     {
         $app = new FacebookApp('123', 'foo_secret');
-        $request = new FacebookRequest($app, null, 'POST', '/me', ['access_token' => 'bar_token']);
+        $request = new FacebookRequest($app, null, 'POST', '/me', array('access_token' => 'bar_token']);
 
         $accessToken = $request->getAccessToken();
 
@@ -115,13 +115,13 @@ class FacebookRequestTest extends \PHPUnit_Framework_TestCase
     public function testAccessTokenConflictsWillThrow()
     {
         $app = new FacebookApp('123', 'foo_secret');
-        new FacebookRequest($app, 'foo_token', 'POST', '/me', ['access_token' => 'bar_token']);
+        new FacebookRequest($app, 'foo_token', 'POST', '/me', array('access_token' => 'bar_token']);
     }
 
     public function testAProperUrlWillBeGenerated()
     {
         $app = new FacebookApp('123', 'foo_secret');
-        $getRequest = new FacebookRequest($app, 'foo_token', 'GET', '/foo', ['foo' => 'bar']);
+        $getRequest = new FacebookRequest($app, 'foo_token', 'GET', '/foo', array('foo' => 'bar']);
 
         $getUrl = $getRequest->getUrl();
         $expectedParams = 'foo=bar&access_token=foo_token&appsecret_proof=df4256903ba4e23636cc142117aa632133d75c642bd2a68955be1443bd14deb9';
@@ -129,7 +129,7 @@ class FacebookRequestTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expectedUrl, $getUrl);
 
-        $postRequest = new FacebookRequest($app, 'foo_token', 'POST', '/bar', ['foo' => 'bar']);
+        $postRequest = new FacebookRequest($app, 'foo_token', 'POST', '/bar', array('foo' => 'bar']);
 
         $postUrl = $postRequest->getUrl();
         $expectedUrl = '/' . Facebook::DEFAULT_GRAPH_VERSION . '/bar';
@@ -150,7 +150,7 @@ class FacebookRequestTest extends \PHPUnit_Framework_TestCase
                 'access_token' => 'foo_token',
                 'appsecret_proof' => 'bar_app_secret',
                 'bar' => 'baz',
-            ]
+            )
         );
 
         $url = $request->getUrl();

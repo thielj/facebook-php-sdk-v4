@@ -92,7 +92,7 @@ class GraphAlbumTest extends \PHPUnit_Framework_TestCase
             'place' => array(
                 'id' => '1',
                 'name' => 'For Bar Place',
-            ]
+            )
         );
 
         $this->responseMock

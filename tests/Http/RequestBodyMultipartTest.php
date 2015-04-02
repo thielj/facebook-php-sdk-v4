@@ -50,7 +50,7 @@ class RequestBodyMultipartTest extends \PHPUnit_Framework_TestCase
         $file = new FacebookFile(__DIR__ . '/../foo.txt');
         $message = new RequestBodyMultipart(array(
             'foo' => 'bar',
-        ), [
+        ), array(
             'foo_file' => $file,
         ), 'foo_boundary');
         $body = $message->getBody();

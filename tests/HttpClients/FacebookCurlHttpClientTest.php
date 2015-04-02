@@ -63,7 +63,7 @@ class FacebookCurlHttpClientTest extends AbstractTestHttpClient
                 }
                 unset($arg[CURLOPT_HTTPHEADER]);
 
-                $caInfo = array_diff($arg, [
+                $caInfo = array_diff($arg, array(
                     CURLOPT_CUSTOMREQUEST => 'GET',
                     CURLOPT_URL => 'http://foo.com',
                     CURLOPT_CONNECTTIMEOUT => 10,
@@ -72,7 +72,7 @@ class FacebookCurlHttpClientTest extends AbstractTestHttpClient
                     CURLOPT_HEADER => true,
                     CURLOPT_SSL_VERIFYHOST => 2,
                     CURLOPT_SSL_VERIFYPEER => true,
-                ]);
+                ));
 
                 if (count($caInfo) !== 1) {
                     return false;
@@ -87,7 +87,7 @@ class FacebookCurlHttpClientTest extends AbstractTestHttpClient
             ->once()
             ->andReturn(null);
 
-        $this->curlClient->openConnection('http://foo.com', 'GET', 'foo_body', ['X-Foo-Header' => 'X-Bar'], 123);
+        $this->curlClient->openConnection('http://foo.com', 'GET', 'foo_body', array('X-Foo-Header' => 'X-Bar'], 123);
     }
 
     public function testCanOpenCurlConnectionWithPostBody()
@@ -106,7 +106,7 @@ class FacebookCurlHttpClientTest extends AbstractTestHttpClient
                 }
                 unset($arg[CURLOPT_HTTPHEADER]);
 
-                $caInfo = array_diff($arg, [
+                $caInfo = array_diff($arg, array(
                     CURLOPT_CUSTOMREQUEST => 'POST',
                     CURLOPT_URL => 'http://bar.com',
                     CURLOPT_CONNECTTIMEOUT => 10,
@@ -116,7 +116,7 @@ class FacebookCurlHttpClientTest extends AbstractTestHttpClient
                     CURLOPT_SSL_VERIFYHOST => 2,
                     CURLOPT_SSL_VERIFYPEER => true,
                     CURLOPT_POSTFIELDS => 'baz=bar',
-                ]);
+                ));
 
                 if (count($caInfo) !== 1) {
                     return false;

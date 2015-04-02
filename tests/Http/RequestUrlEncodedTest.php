@@ -32,7 +32,7 @@ class RequestUrlEncodedTest extends \PHPUnit_Framework_TestCase
         $message = new RequestBodyUrlEncoded(array(
             'foo' => 'bar',
             'scawy_vawues' => '@FooBar is a real twitter handle.',
-        ]);
+        ));
         $body = $message->getBody();
 
         $this->assertEquals('foo=bar&scawy_vawues=%40FooBar+is+a+real+twitter+handle.', $body);

@@ -68,12 +68,12 @@ class FacebookBatchResponseTest extends \PHPUnit_Framework_TestCase
         $graphResponseJson .= ',{"code":200,"headers":[{"name":"Connection","value":"close"},{"name":"Expires","value":"Sat, 01 Jan 2000 00:00:00 GMT"},{"name":"Cache-Control","value":"private, no-cache, no-store, must-revalidate"},{"name":"Access-Control-Allow-Origin","value":"*"},{"name":"Pragma","value":"no-cache"},{"name":"Content-Type","value":"text\/javascript; charset=UTF-8"},{"name":"Facebook-API-Version","value":"v2.0"}],"body":"true"}';
         $graphResponseJson .= ']';
         $response = new FacebookResponse($this->request, $graphResponseJson, 200);
-        $batchRequest = new FacebookBatchRequest($this->app, [
+        $batchRequest = new FacebookBatchRequest($this->app, array(
             new FacebookRequest($this->app, 'token'),
             new FacebookRequest($this->app, 'token'),
             new FacebookRequest($this->app, 'token'),
             new FacebookRequest($this->app, 'token'),
-        ]);
+        ));
         $batchResponse = new FacebookBatchResponse($batchRequest, $response);
 
         $decodedResponses = $batchResponse->getResponses();
@@ -96,17 +96,17 @@ class FacebookBatchResponseTest extends \PHPUnit_Framework_TestCase
         $graphResponseJson .= ',{"code":200,"headers":[],"body":"{\"foo\":\"bar\"}"}';
         $graphResponseJson .= ']';
         $response = new FacebookResponse($this->request, $graphResponseJson, 200);
-        $batchRequest = new FacebookBatchRequest($this->app, [
+        $batchRequest = new FacebookBatchRequest($this->app, array(
             'req_one' => new FacebookRequest($this->app, 'token'),
             'req_two' => new FacebookRequest($this->app, 'token'),
             'req_three' => new FacebookRequest($this->app, 'token'),
-        ]);
+        ));
         $batchResponse = new FacebookBatchResponse($batchRequest, $response);
 
         $this->assertInstanceOf('IteratorAggregate', $batchResponse);
 
         foreach ($batchResponse as $key => $responseEntity) {
-            $this->assertTrue(in_array($key, ['req_one', 'req_two', 'req_three']));
+            $this->assertTrue(in_array($key, array('req_one', 'req_two', 'req_three']));
             $this->assertInstanceOf('Facebook\FacebookResponse', $responseEntity);
         }
     }

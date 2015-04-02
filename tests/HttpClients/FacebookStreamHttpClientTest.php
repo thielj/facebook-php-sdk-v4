@@ -70,16 +70,16 @@ class FacebookStreamHttpClientTest extends AbstractTestHttpClient
                         'content' => 'foo_body',
                         'timeout' => 123,
                         'ignore_errors' => true,
-                    ]
+                    )
                 ) {
                     return false;
                 }
 
-                $caInfo = array_diff_assoc($arg['ssl'], [
+                $caInfo = array_diff_assoc($arg['ssl'], array(
                     'verify_peer' => true,
                     'verify_peer_name' => true,
                     'allow_self_signed' => true,
-                ]);
+                ));
 
                 if (count($caInfo) !== 1) {
                     return false;
@@ -102,7 +102,7 @@ class FacebookStreamHttpClientTest extends AbstractTestHttpClient
             ->with('http://foo.com/')
             ->andReturn($this->fakeRawBody);
 
-        $response = $this->streamClient->send('http://foo.com/', 'GET', 'foo_body', ['X-foo' => 'bar'], 123);
+        $response = $this->streamClient->send('http://foo.com/', 'GET', 'foo_body', array('X-foo' => 'bar'], 123);
 
         $this->assertInstanceOf('Facebook\Http\GraphRawResponse', $response);
         $this->assertEquals($this->fakeRawBody, $response->getBody());

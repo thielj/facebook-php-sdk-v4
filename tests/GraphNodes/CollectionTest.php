@@ -58,7 +58,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
             'key1' => 'foo',
             'key2' => 'bar',
             'key3' => 'baz',
-        ]);
+        ));
         $propertyKeys = $graphObject->getPropertyNames();
 
         $this->assertEquals(array('key1', 'key2', 'key3'), $propertyKeys);

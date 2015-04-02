@@ -111,17 +111,17 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
      */
     public function testSettingAnInvalidHttpClientHandlerThrows()
     {
-        $config = array_merge($this->config, [
+        $config = array_merge($this->config, array(
             'http_client_handler' => 'foo_handler',
-        ]);
+        ));
         $fb = new Facebook($config);
     }
 
     public function testCurlHttpClientHandlerCanBeForced()
     {
-        $config = array_merge($this->config, [
+        $config = array_merge($this->config, array(
             'http_client_handler' => 'curl'
-        ]);
+        ));
         $fb = new Facebook($config);
         $this->assertInstanceOf(
             'Facebook\HttpClients\FacebookCurlHttpClient',
@@ -131,9 +131,9 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
 
     public function testStreamHttpClientHandlerCanBeForced()
     {
-        $config = array_merge($this->config, [
+        $config = array_merge($this->config, array(
             'http_client_handler' => 'stream'
-        ]);
+        ));
         $fb = new Facebook($config);
         $this->assertInstanceOf(
             'Facebook\HttpClients\FacebookStreamHttpClient',
@@ -143,9 +143,9 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
 
     public function testGuzzleHttpClientHandlerCanBeForced()
     {
-        $config = array_merge($this->config, [
+        $config = array_merge($this->config, array(
             'http_client_handler' => 'guzzle'
-        ]);
+        ));
         $fb = new Facebook($config);
         $this->assertInstanceOf(
             'Facebook\HttpClients\FacebookGuzzleHttpClient',
@@ -158,17 +158,17 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
      */
     public function testSettingAnInvalidPersistentDataHandlerThrows()
     {
-        $config = array_merge($this->config, [
+        $config = array_merge($this->config, array(
             'persistent_data_handler' => 'foo_handler',
-        ]);
+        ));
         $fb = new Facebook($config);
     }
 
     public function testPersistentDataHandlerCanBeForced()
     {
-        $config = array_merge($this->config, [
+        $config = array_merge($this->config, array(
             'persistent_data_handler' => 'memory'
-        ]);
+        ));
         $fb = new Facebook($config);
         $this->assertInstanceOf(
             'Facebook\PersistentData\FacebookMemoryPersistentDataHandler',
@@ -181,9 +181,9 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
      */
     public function testSettingAnInvalidUrlHandlerThrows()
     {
-        $config = array_merge($this->config, [
+        $config = array_merge($this->config, array(
             'url_detection_handler' => 'foo_handler',
-        ]);
+        ));
         $fb = new Facebook($config);
     }
 
@@ -218,9 +218,9 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
      */
     public function testSettingAnInvalidPseudoRandomStringGeneratorThrows()
     {
-        $config = array_merge($this->config, [
+        $config = array_merge($this->config, array(
             'pseudo_random_string_generator' => 'foo_generator',
-        ]);
+        ));
         new Facebook($config);
     }
 
@@ -232,10 +232,10 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
             );
         }
 
-        $config = array_merge($this->config, [
+        $config = array_merge($this->config, array(
             'persistent_data_handler' => 'memory', // To keep session errors from happening
             'pseudo_random_string_generator' => 'mcrypt'
-        ]);
+        ));
         $fb = new Facebook($config);
         $this->assertInstanceOf(
             'Facebook\PseudoRandomString\McryptPseudoRandomStringGenerator',
@@ -251,10 +251,10 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
             );
         }
 
-        $config = array_merge($this->config, [
+        $config = array_merge($this->config, array(
             'persistent_data_handler' => 'memory', // To keep session errors from happening
             'pseudo_random_string_generator' => 'openssl'
-        ]);
+        ));
         $fb = new Facebook($config);
         $this->assertInstanceOf(
             'Facebook\PseudoRandomString\OpenSslPseudoRandomStringGenerator',
@@ -276,10 +276,10 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
             );
         }
 
-        $config = array_merge($this->config, [
+        $config = array_merge($this->config, array(
             'persistent_data_handler' => 'memory', // To keep session errors from happening
             'pseudo_random_string_generator' => 'urandom'
-        ]);
+        ));
         $fb = new Facebook($config);
         $this->assertInstanceOf(
             'Facebook\PseudoRandomString\UrandomPseudoRandomStringGenerator',
@@ -292,19 +292,19 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
      */
     public function testSettingAnAccessThatIsNotStringOrAccessTokenThrows()
     {
-        $config = array_merge($this->config, [
+        $config = array_merge($this->config, array(
             'default_access_token' => 123,
-        ]);
+        ));
         $fb = new Facebook($config);
     }
 
     public function testCreatingANewRequestWillDefaultToTheProperConfig()
     {
-        $config = array_merge($this->config, [
+        $config = array_merge($this->config, array(
             'default_access_token' => 'foo_token',
             'enable_beta_mode' => true,
             'default_graph_version' => 'v1337',
-        ]);
+        ));
         $fb = new Facebook($config);
 
         $request = $fb->request('FOO_VERB', '/foo');
@@ -320,12 +320,12 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
 
     public function testCanInjectCustomHandlers()
     {
-        $config = array_merge($this->config, [
+        $config = array_merge($this->config, array(
             'http_client_handler' => new FooClientInterface(),
             'persistent_data_handler' => new FooPersistentDataInterface(),
             'url_detection_handler' => new FooUrlDetectionInterface(),
             'pseudo_random_string_generator' => new FooBarPseudoRandomStringGenerator(),
-        ]);
+        ));
         $fb = new Facebook($config);
 
         $this->assertInstanceOf(
@@ -348,9 +348,9 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
 
     public function testPaginationReturnsProperResponse()
     {
-        $config = array_merge($this->config, [
+        $config = array_merge($this->config, array(
             'http_client_handler' => new FooClientInterface(),
-        ]);
+        ));
         $fb = new Facebook($config);
 
         $request = new FacebookRequest($fb->getApp(), 'foo_token', 'GET');
@@ -363,7 +363,7 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
                         'after' => 'bar_after_cursor',
                         'before' => 'bar_before_cursor',
                     ),
-                ]
+                )
             ),
             '/1337/photos',
             '\Facebook\GraphNodes\GraphUser'

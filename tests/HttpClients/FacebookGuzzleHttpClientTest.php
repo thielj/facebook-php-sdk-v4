@@ -66,11 +66,11 @@ class FacebookGuzzleHttpClientTest extends AbstractTestHttpClient
                 }
                 unset($arg['headers']);
 
-                $caInfo = array_diff_assoc($arg, [
+                $caInfo = array_diff_assoc($arg, array(
                     'body' => 'foo_body',
                     'timeout' => 123,
                     'connect_timeout' => 10,
-                ]);
+                ));
 
                 if (count($caInfo) !== 1) {
                     return false;
@@ -89,7 +89,7 @@ class FacebookGuzzleHttpClientTest extends AbstractTestHttpClient
             ->with($request)
             ->andReturn($response);
 
-        $response = $this->guzzleClient->send('http://foo.com/', 'GET', 'foo_body', ['X-foo' => 'bar'], 123);
+        $response = $this->guzzleClient->send('http://foo.com/', 'GET', 'foo_body', array('X-foo' => 'bar'], 123);
 
         $this->assertInstanceOf('Facebook\Http\GraphRawResponse', $response);
         $this->assertEquals($this->fakeRawBody, $response->getBody());
@@ -115,11 +115,11 @@ class FacebookGuzzleHttpClientTest extends AbstractTestHttpClient
                 }
                 unset($arg['headers']);
 
-                $caInfo = array_diff_assoc($arg, [
+                $caInfo = array_diff_assoc($arg, array(
                     'body' => 'foo_body',
                     'timeout' => 60,
                     'connect_timeout' => 10,
-                ]);
+                ));
 
                 if (count($caInfo) !== 1) {
                     return false;

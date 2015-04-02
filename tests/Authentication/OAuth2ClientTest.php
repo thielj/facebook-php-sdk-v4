@@ -78,7 +78,7 @@ class OAuth2ClientTest extends \PHPUnit_Framework_TestCase
     public function testCanBuildAuthorizationUrl()
     {
         $scope = array('email', 'base_foo');
-        $authUrl = $this->oauth->getAuthorizationUrl('https://foo.bar', 'foo_state', $scope, ['foo' => 'bar'], '*');
+        $authUrl = $this->oauth->getAuthorizationUrl('https://foo.bar', 'foo_state', $scope, array('foo' => 'bar'], '*');
 
         $this->assertContains('*', $authUrl);
 

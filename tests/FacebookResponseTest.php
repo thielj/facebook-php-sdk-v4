@@ -50,7 +50,7 @@ class FacebookResponseTest extends \PHPUnit_Framework_TestCase
 
     public function testAnETagCanBeProperlyAccessed()
     {
-        $response = new FacebookResponse($this->request, '', 200, ['ETag' => 'foo_tag']);
+        $response = new FacebookResponse($this->request, '', 200, array('ETag' => 'foo_tag']);
 
         $eTag = $response->getETag();
 

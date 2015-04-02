@@ -88,7 +88,7 @@ class GraphAchievementTest extends GraphNodeTest
             'from' => array(
                 'id' => '1337',
                 'name' => 'Foo McBar'
-            ]
+            )
         );
 
         $factory = $this->makeFactoryWithData($dataFromGraph);
@@ -104,7 +104,7 @@ class GraphAchievementTest extends GraphNodeTest
         $dataFromGraph = array(
             'application' => array(
                 'id' => '1337'
-            ]
+            )
         );
 
         $factory = $this->makeFactoryWithData($dataFromGraph);

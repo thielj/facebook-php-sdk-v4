@@ -101,7 +101,7 @@ class GraphObjectTest extends \PHPUnit_Framework_TestCase
             'id' => '123',
             'date' => new \DateTime('2014-07-15T03:44:53+0000'),
             'some_collection' => $collectionOne,
-        ]);
+        ));
 
         $uncastArray = $collectionTwo->uncastItems();
 
@@ -117,7 +117,7 @@ class GraphObjectTest extends \PHPUnit_Framework_TestCase
         $collection = new GraphObject(array(
             'id' => '123',
             'date' => new \DateTime('2014-07-15T03:44:53+0000'),
-        ]);
+        ));
 
         $collectionAsArray = $collection->asArray();
 
@@ -129,7 +129,7 @@ class GraphObjectTest extends \PHPUnit_Framework_TestCase
         $collection = new GraphObject(array(
             'id' => '123',
             'date' => new \DateTime('2014-07-15T03:44:53+0000'),
-        ]);
+        ));
 
         $collectionAsString = $collection->asJson();
 

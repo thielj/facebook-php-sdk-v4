@@ -114,7 +114,7 @@ class FacebookBatchRequestTest extends \PHPUnit_Framework_TestCase
     {
         $requests = array(
             null => new FacebookRequest(null, null, 'GET', '/foo'),
-            'my-second-request' => new FacebookRequest(null, null, 'POST', '/bar', ['foo' => 'bar']),
+            'my-second-request' => new FacebookRequest(null, null, 'POST', '/bar', array('foo' => 'bar']),
             'my-third-request' => new FacebookRequest(null, null, 'DELETE', '/baz')
         );
 
@@ -132,7 +132,7 @@ class FacebookBatchRequestTest extends \PHPUnit_Framework_TestCase
     {
         $requests = array(
             new FacebookRequest(null, null, 'GET', '/foo'),
-            new FacebookRequest(null, null, 'POST', '/bar', ['foo' => 'bar']),
+            new FacebookRequest(null, null, 'POST', '/bar', array('foo' => 'bar']),
             new FacebookRequest(null, null, 'DELETE', '/baz'),
         );
 
@@ -145,7 +145,7 @@ class FacebookBatchRequestTest extends \PHPUnit_Framework_TestCase
     {
         $requests = array(
             'req-one' => new FacebookRequest(null, null, 'GET', '/foo'),
-            'req-two' => new FacebookRequest(null, null, 'POST', '/bar', ['foo' => 'bar']),
+            'req-two' => new FacebookRequest(null, null, 'POST', '/bar', array('foo' => 'bar']),
             'req-three' => new FacebookRequest(null, null, 'DELETE', '/baz'),
         );
 
@@ -158,7 +158,7 @@ class FacebookBatchRequestTest extends \PHPUnit_Framework_TestCase
     {
         $requests = array(
             new FacebookRequest(null, null, 'GET', '/foo'),
-            new FacebookRequest(null, null, 'POST', '/bar', ['foo' => 'bar']),
+            new FacebookRequest(null, null, 'POST', '/bar', array('foo' => 'bar']),
             new FacebookRequest(null, null, 'DELETE', '/baz'),
         );
 
@@ -220,7 +220,7 @@ class FacebookBatchRequestTest extends \PHPUnit_Framework_TestCase
 
         return array(
             array(
-                new FacebookRequest(null, null, 'GET', '/foo', ['foo' => 'bar']),
+                new FacebookRequest(null, null, 'GET', '/foo', array('foo' => 'bar']),
                 array(
                     'headers' => $headers,
                     'method' => 'GET',
@@ -229,7 +229,7 @@ class FacebookBatchRequestTest extends \PHPUnit_Framework_TestCase
                 ),
             ),
             array(
-                new FacebookRequest(null, null, 'POST', '/bar', ['bar' => 'baz']),
+                new FacebookRequest(null, null, 'POST', '/bar', array('bar' => 'baz']),
                 array(
                     'headers' => $headers,
                     'method' => 'POST',
@@ -252,7 +252,7 @@ class FacebookBatchRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testBatchRequestsWithFilesGetConvertedToAnArray()
     {
-        $request = new FacebookRequest(null, null, 'POST', '/bar', [
+        $request = new FacebookRequest(null, null, 'POST', '/bar', array(
             'message' => 'foobar',
             'source' => new FacebookFile(__DIR__ . '/foo.txt'),
         ));
@@ -284,7 +284,7 @@ class FacebookBatchRequestTest extends \PHPUnit_Framework_TestCase
     {
         $batchRequest = $this->createBatchRequest();
         $batchRequest->add(new FacebookRequest(null, 'bar_token', 'GET', '/foo'), 'foo_name');
-        $batchRequest->add(new FacebookRequest(null, null, 'POST', '/bar', ['foo' => 'bar']));
+        $batchRequest->add(new FacebookRequest(null, null, 'POST', '/bar', array('foo' => 'bar']));
         $batchRequest->prepareRequestsForBatch();
 
         $params = $batchRequest->getParams();
@@ -305,7 +305,7 @@ class FacebookBatchRequestTest extends \PHPUnit_Framework_TestCase
     {
         $batchRequest = $this->createBatchRequest();
         $batchRequest->add(new FacebookRequest(null, 'bar_token', 'GET', '/foo'), 'foo_name');
-        $batchRequest->add(new FacebookRequest(null, null, 'POST', '/me/photos', [
+        $batchRequest->add(new FacebookRequest(null, null, 'POST', '/me/photos', array(
             'message' => 'foobar',
             'source' => new FacebookFile(__DIR__ . '/foo.txt'),
         )));

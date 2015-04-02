@@ -220,7 +220,7 @@ class GraphObjectFactoryTest extends \PHPUnit_Framework_TestCase
             'id' => '123',
             'name' => 'Foo McBar',
             'link' => 'http://facebook/foo',
-        ]);
+        ));
         $res = new FacebookResponse($this->request, $data);
 
         $factory = new GraphObjectFactory($res);
@@ -243,7 +243,7 @@ class GraphObjectFactoryTest extends \PHPUnit_Framework_TestCase
                 'name' => 'Foo McBar',
                 'link' => 'http://facebook/foo',
             ),
-        ]);
+        ));
 
         $res = new FacebookResponse($this->request, $data);
 
@@ -417,7 +417,7 @@ class GraphObjectFactoryTest extends \PHPUnit_Framework_TestCase
                 'next' => 'http://facebook/next',
                 'previous' => 'http://facebook/prev',
             ),
-        ]);
+        ));
         $res = new FacebookResponse($this->request, $data);
 
         $factory = new GraphObjectFactory($res);
