@@ -46,7 +46,7 @@ class FacebookSessionPersistentDataHandler implements PersistentDataInterface
      */
     public function __construct($enableSessionCheck = true)
     {
-        if ($enableSessionCheck && session_status() !== PHP_SESSION_ACTIVE) {
+        if ($enableSessionCheck && !$this->isSessionActive()) {
             throw new FacebookSDKException(
                 'Sessions are not active. Please make sure session_start() is at the top of your script.',
                 720
@@ -72,5 +72,23 @@ class FacebookSessionPersistentDataHandler implements PersistentDataInterface
     public function set($key, $value)
     {
         $_SESSION[$this->sessionPrefix . $key] = $value;
+    }
+
+    /**
+     * See http://stackoverflow.com/a/7656468
+     *
+     * @return bool
+     */
+    public function isSessionActive()
+    {
+        $setting = 'session.use_trans_sid';
+        $current = ini_get($setting);
+        if (false === $current)
+        {
+            return false;
+        }
+        $result = @ini_set($setting, $current);
+
+        return $result !== $current;
     }
 }
