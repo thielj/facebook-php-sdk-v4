@@ -266,7 +266,7 @@ class FacebookRequest
         }
 
         // Clean the token & app secret proof from the endpoint.
-        $filterParams = array('access_token', 'appsecret_proof'];
+        $filterParams = array('access_token', 'appsecret_proof');
         $this->endpoint = FacebookUrlManipulator::removeParamsFromUrl($endpoint, $filterParams);
 
         return $this;

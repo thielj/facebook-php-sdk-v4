@@ -77,7 +77,7 @@ class AccessTokenMetadataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('rerequest', $metadata->getAuthType());
         $this->assertEquals('no-replicatey', $metadata->getAuthNonce());
         $this->assertEquals('1000', $metadata->getProfileId());
-        $this->assertEquals(array('public_profile', 'basic_info', 'user_friends'], $metadata->getScopes());
+        $this->assertEquals(array('public_profile', 'basic_info', 'user_friends'), $metadata->getScopes());
         $this->assertEquals('1337', $metadata->getUserId());
     }
 
@@ -86,7 +86,7 @@ class AccessTokenMetadataTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidMetadataWillThrow()
     {
-        new AccessTokenMetadata(array('foo' => 'bar']);
+        new AccessTokenMetadata(array('foo' => 'bar'));
     }
 
     public function testAnExpectedAppIdWillNotThrow()

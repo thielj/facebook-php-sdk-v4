@@ -328,7 +328,7 @@ class GraphObjectFactoryTest extends \PHPUnit_Framework_TestCase
                     'id' => '1337_2',
                     'from' => $someUser,
                     'to' => array(
-                        'data' => array($someUser],
+                        'data' => array($someUser),
                     ),
                     'message' => 'Some great bar message.',
                     'likes' => $likesCollection,

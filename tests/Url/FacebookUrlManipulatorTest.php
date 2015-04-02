@@ -146,10 +146,10 @@ class FacebookUrlManipulatorTest extends \PHPUnit_Framework_TestCase
         $paramsFive = FacebookUrlManipulator::getParamsAsArray('https://www.foo.com/?foo=bar');
 
         $this->assertEquals(array(), $paramsOne);
-        $this->assertEquals(array('one' => '1', 'two' => '2'], $paramsTwo);
+        $this->assertEquals(array('one' => '1', 'two' => '2'), $paramsTwo);
         $this->assertEquals(array(), $paramsThree);
         $this->assertEquals(array(), $paramsFour);
-        $this->assertEquals(array('foo' => 'bar'], $paramsFive);
+        $this->assertEquals(array('foo' => 'bar'), $paramsFive);
     }
 
     /**

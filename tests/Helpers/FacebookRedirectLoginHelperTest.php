@@ -72,7 +72,7 @@ class FacebookRedirectLoginHelperTest extends \PHPUnit_Framework_TestCase
 
     public function testLoginURL()
     {
-        $scope = array('foo', 'bar'];
+        $scope = array('foo', 'bar');
         $loginUrl = $this->redirectLoginHelper->getLoginUrl(self::REDIRECT_URL, $scope);
 
         $expectedUrl = 'https://www.facebook.com/v1337/dialog/oauth?';

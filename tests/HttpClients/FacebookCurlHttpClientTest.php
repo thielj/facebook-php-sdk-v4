@@ -154,7 +154,7 @@ class FacebookCurlHttpClientTest extends AbstractTestHttpClient
         $this->curlMock
             ->shouldReceive('version')
             ->once()
-            ->andReturn(array('version_number' => self::CURL_VERSION_STABLE]);
+            ->andReturn(array('version_number' => self::CURL_VERSION_STABLE));
         $this->curlMock
             ->shouldReceive('exec')
             ->once()
@@ -178,7 +178,7 @@ class FacebookCurlHttpClientTest extends AbstractTestHttpClient
         $this->curlMock
             ->shouldReceive('version')
             ->once()
-            ->andReturn(array('version_number' => self::CURL_VERSION_STABLE]);
+            ->andReturn(array('version_number' => self::CURL_VERSION_STABLE));
         $this->curlMock
             ->shouldReceive('exec')
             ->once()
@@ -202,7 +202,7 @@ class FacebookCurlHttpClientTest extends AbstractTestHttpClient
         $this->curlMock
             ->shouldReceive('version')
             ->once()
-            ->andReturn(array('version_number' => self::CURL_VERSION_BUGGY]);
+            ->andReturn(array('version_number' => self::CURL_VERSION_BUGGY));
         $this->curlMock
             ->shouldReceive('exec')
             ->once()
@@ -226,7 +226,7 @@ class FacebookCurlHttpClientTest extends AbstractTestHttpClient
         $this->curlMock
             ->shouldReceive('version')
             ->once()
-            ->andReturn(array('version_number' => self::CURL_VERSION_BUGGY]);
+            ->andReturn(array('version_number' => self::CURL_VERSION_BUGGY));
         $this->curlMock
             ->shouldReceive('exec')
             ->once()
@@ -250,7 +250,7 @@ class FacebookCurlHttpClientTest extends AbstractTestHttpClient
         $this->curlMock
             ->shouldReceive('version')
             ->once()
-            ->andReturn(array('version_number' => self::CURL_VERSION_STABLE]);
+            ->andReturn(array('version_number' => self::CURL_VERSION_STABLE));
         $this->curlMock
             ->shouldReceive('exec')
             ->once()
@@ -289,7 +289,7 @@ class FacebookCurlHttpClientTest extends AbstractTestHttpClient
         $this->curlMock
             ->shouldReceive('version')
             ->once()
-            ->andReturn(array('version_number' => self::CURL_VERSION_STABLE]);
+            ->andReturn(array('version_number' => self::CURL_VERSION_STABLE));
         $this->curlMock
             ->shouldReceive('close')
             ->once()

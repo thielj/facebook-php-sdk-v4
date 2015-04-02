@@ -104,7 +104,7 @@ class OAuth2Client
     public function debugToken($accessToken)
     {
         $accessToken = $accessToken instanceof AccessToken ? $accessToken->getValue() : $accessToken;
-        $params = array('input_token' => $accessToken];
+        $params = array('input_token' => $accessToken);
 
         $this->lastRequest = new FacebookRequest(
             $this->app,

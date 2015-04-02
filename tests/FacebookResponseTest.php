@@ -42,7 +42,7 @@ class FacebookResponseTest extends \PHPUnit_Framework_TestCase
             'foo_token',
             'GET',
             '/me/photos?keep=me',
-            array('foo' => 'bar'],
+            array('foo' => 'bar'),
             'foo_eTag',
             'v1337'
         );

@@ -96,7 +96,7 @@ class GraphObjectTest extends \PHPUnit_Framework_TestCase
 
     public function testUncastingAGraphObjectWillUncastTheDateTimeObject()
     {
-        $collectionOne = new GraphObject(array('foo', 'bar']);
+        $collectionOne = new GraphObject(array('foo', 'bar'));
         $collectionTwo = new GraphObject(array(
             'id' => '123',
             'date' => new \DateTime('2014-07-15T03:44:53+0000'),
@@ -108,7 +108,7 @@ class GraphObjectTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(array(
             'id' => '123',
             'date' => '2014-07-15T03:44:53+0000',
-            'some_collection' => array('foo', 'bar'],
+            'some_collection' => array('foo', 'bar'),
         ), $uncastArray);
     }
 
