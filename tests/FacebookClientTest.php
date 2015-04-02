@@ -199,7 +199,7 @@ class FacebookClientTest extends \PHPUnit_Framework_TestCase
 
     public function testARequestOfParamsWillBeUrlEncoded()
     {
-        $fbRequest = new FacebookRequest($this->fbApp, 'token', 'POST', '/foo', array('foo' => 'bar']);
+        $fbRequest = new FacebookRequest($this->fbApp, 'token', 'POST', '/foo', array('foo' => 'bar'));
         $response = $this->fbClient->sendRequest($fbRequest);
 
         $headersSent = $response->getRequest()->getHeaders();
@@ -210,7 +210,7 @@ class FacebookClientTest extends \PHPUnit_Framework_TestCase
     public function testARequestWithFilesWillBeMultipart()
     {
         $myFile = new FacebookFile(__DIR__ . '/foo.txt');
-        $fbRequest = new FacebookRequest($this->fbApp, 'token', 'POST', '/foo', array('file' => $myFile]);
+        $fbRequest = new FacebookRequest($this->fbApp, 'token', 'POST', '/foo', array('file' => $myFile));
         $response = $this->fbClient->sendRequest($fbRequest);
 
         $headersSent = $response->getRequest()->getHeaders();
@@ -231,7 +231,7 @@ class FacebookClientTest extends \PHPUnit_Framework_TestCase
             'installed' => true,
             'name' => 'Foo Phpunit User',
             'locale' => 'en_US',
-            'permissions' => implode(',', array('read_stream', 'user_photos']),
+            'permissions' => implode(',', array('read_stream', 'user_photos')),
         );
 
         $request = new FacebookRequest(

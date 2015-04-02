@@ -106,7 +106,7 @@ class FacebookBatchResponseTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('IteratorAggregate', $batchResponse);
 
         foreach ($batchResponse as $key => $responseEntity) {
-            $this->assertTrue(in_array($key, array('req_one', 'req_two', 'req_three']));
+            $this->assertTrue(in_array($key, array('req_one', 'req_two', 'req_three')));
             $this->assertInstanceOf('Facebook\FacebookResponse', $responseEntity);
         }
     }

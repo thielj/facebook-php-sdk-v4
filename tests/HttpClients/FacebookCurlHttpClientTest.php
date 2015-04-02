@@ -58,7 +58,7 @@ class FacebookCurlHttpClientTest extends AbstractTestHttpClient
             ->with(m::on(function ($arg) {
 
                 // array_diff() will sometimes trigger error on child-arrays
-                if (array('X-Foo-Header: X-Bar'] !== $arg[CURLOPT_HTTPHEADER]) {
+                if (array('X-Foo-Header: X-Bar') !== $arg[CURLOPT_HTTPHEADER]) {
                     return false;
                 }
                 unset($arg[CURLOPT_HTTPHEADER]);
@@ -87,7 +87,7 @@ class FacebookCurlHttpClientTest extends AbstractTestHttpClient
             ->once()
             ->andReturn(null);
 
-        $this->curlClient->openConnection('http://foo.com', 'GET', 'foo_body', array('X-Foo-Header' => 'X-Bar'], 123);
+        $this->curlClient->openConnection('http://foo.com', 'GET', 'foo_body', array('X-Foo-Header' => 'X-Bar'), 123);
     }
 
     public function testCanOpenCurlConnectionWithPostBody()

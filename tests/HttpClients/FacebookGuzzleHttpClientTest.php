@@ -61,7 +61,7 @@ class FacebookGuzzleHttpClientTest extends AbstractTestHttpClient
             ->with('GET', 'http://foo.com/', m::on(function ($arg) {
 
                 // array_diff_assoc() will sometimes trigger error on child-arrays
-                if (array('X-foo' => 'bar'] !== $arg['headers']) {
+                if (array('X-foo' => 'bar') !== $arg['headers']) {
                     return false;
                 }
                 unset($arg['headers']);
@@ -89,7 +89,7 @@ class FacebookGuzzleHttpClientTest extends AbstractTestHttpClient
             ->with($request)
             ->andReturn($response);
 
-        $response = $this->guzzleClient->send('http://foo.com/', 'GET', 'foo_body', array('X-foo' => 'bar'], 123);
+        $response = $this->guzzleClient->send('http://foo.com/', 'GET', 'foo_body', array('X-foo' => 'bar'), 123);
 
         $this->assertInstanceOf('Facebook\Http\GraphRawResponse', $response);
         $this->assertEquals($this->fakeRawBody, $response->getBody());

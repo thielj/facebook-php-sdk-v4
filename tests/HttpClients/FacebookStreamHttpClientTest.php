@@ -102,7 +102,7 @@ class FacebookStreamHttpClientTest extends AbstractTestHttpClient
             ->with('http://foo.com/')
             ->andReturn($this->fakeRawBody);
 
-        $response = $this->streamClient->send('http://foo.com/', 'GET', 'foo_body', array('X-foo' => 'bar'], 123);
+        $response = $this->streamClient->send('http://foo.com/', 'GET', 'foo_body', array('X-foo' => 'bar'), 123);
 
         $this->assertInstanceOf('Facebook\Http\GraphRawResponse', $response);
         $this->assertEquals($this->fakeRawBody, $response->getBody());
