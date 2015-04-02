@@ -23,14 +23,12 @@
  */
 namespace Facebook\Tests\PseudoRandomString;
 
-use Facebook\PseudoRandomString\PseudoRandomStringGeneratorTrait;
+use Facebook\PseudoRandomString\PseudoRandomStringGenerator;
 
-class MyFooBarPseudoRandomStringGenerator
-{
-    use PseudoRandomStringGeneratorTrait;
-}
+class MyFooBarPseudoRandomStringGenerator extends PseudoRandomStringGenerator
+{}
 
-class PseudoRandomStringGeneratorTraitTest extends \PHPUnit_Framework_TestCase
+class PseudoRandomStringGeneratorTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @expectedException \InvalidArgumentException
